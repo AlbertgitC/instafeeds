@@ -25,7 +25,7 @@ class SessionForm extends React.Component {
 
   renderErrors() {
     return (
-      <ul>
+      <ul id="errors">
         {this.props.errors.map((error, i) => (
           <li key={i}>
             {error}
@@ -36,30 +36,25 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    if (this.props.formType === 'login'){
+    if (this.props.formType === 'Log In'){
       return (
-        <div>
+        <div className="session-form">
           <form onSubmit={this.handleSubmit}>
             <h1>Instafeeds</h1>
             <br />
-            Please {this.props.formType} or {this.props.navLink}
+            <p>Please {this.props.formType} or {this.props.navLink}</p>
             {this.renderErrors()}
-            <div>
-              <br />
-              <label>Username:
+            <div>                    
                 <input type="text"
                   value={this.state.username}
                   onChange={this.update('username')}
-                />
-              </label>
-              <br />
-              <label>Password:
+                  placeholder="Username"
+                />        
                 <input type="password"
                   value={this.state.password}
-                  onChange={this.update('password')}                
+                  onChange={this.update('password')}
+                  placeholder="Password"                
                 />
-              </label>
-              <br />
               <input type="submit" value={this.props.formType} />
             </div>
           </form>
@@ -67,38 +62,35 @@ class SessionForm extends React.Component {
       );
     } else {
       return (
-        <div>
+        <div className="session-form">
           <form onSubmit={this.handleSubmit}>
-            <h1>Instafeeds</h1>
+            <h1>Instafeeds</h1>            
+            <p>Sign up to see what all the pets are up to!</p>                       
             <br />
-            Please {this.props.formType} or {this.props.navLink}
             {this.renderErrors()}
-            <div>
-              <br />
-              <label>Email:
-                <input type="text"
-                  value={this.state.email}
-                  onChange={this.update('email')}
-                />
-              </label>
-              <br />
-              <label>Username:
-                <input type="text"
-                  value={this.state.username}
-                  onChange={this.update('username')}
-                />
-              </label>
-              <br />
-              <label>Password:
-                <input type="password"
-                  value={this.state.password}
-                  onChange={this.update('password')}
-                />
-              </label>
-              <br />
-              <input type="submit" value={this.props.formType} />
+            <div>      
+              <input type="text"
+                value={this.state.email}
+                onChange={this.update('email')}
+                placeholder="Email"
+              />           
+              <input type="text"
+                value={this.state.username}
+                onChange={this.update('username')}
+                placeholder="Username"
+              />          
+              <input type="password"
+                value={this.state.password}
+                onChange={this.update('password')}
+                placeholder="Password"
+              />
+              <button>{this.props.formType}</button>
+              <p>By signing up, you agree to our <b>Terms</b> , <b>Data</b> <b>Policy</b>  and <b>Cookies</b> <b>Policy</b> .</p>
             </div>
           </form>
+          <div>
+            <p>Have an account? {this.props.navLink}</p>
+          </div>
         </div>
       );
     }
