@@ -1,6 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+window.onclick = function (event) {
+  if (!event.target.matches('.dropbtn')) {
+    const dropdowns = document.getElementsByClassName("dropdown-content");
+    let i;
+    for (i = 0; i < dropdowns.length; i++) {
+      const openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
 class Index extends React.Component {
 
@@ -8,6 +22,7 @@ class Index extends React.Component {
     super(props);
 
     this.logout = this.logout.bind(this);
+    
   }
 
   logout() {
@@ -16,31 +31,74 @@ class Index extends React.Component {
     );
   }
 
+  toggleDropdown() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
   render() {
 
     if (this.props.currentUser) {
       return (
-        <div>
+        <div className="user-profile-page">
           <NavBarContainer />
-          <h2>{this.props.currentUser.username}</h2>
-          <ul>Edit Profile
-            <li>
-              <button>Change Password</button>
-            </li>
-            <li>
-              <button onClick={this.logout}>Log Out</button>
-            </li>
-            <li>
-              <button>Cancel</button>
-            </li>
-          </ul>
+          <div className="user-profile">
+            <FontAwesomeIcon id="user-pic" icon={['far', 'user']} size="7x" />
+            <div className="user-details">
+              <div className="username">
+                <h2>{this.props.currentUser.username}</h2>
+                <div className="user-dropdown">
+                  <button className="dropbtn" onClick={this.toggleDropdown}>Edit Profile</button>
+                  <div id="myDropdown" className="dropdown-content">
+                    <li>
+                      <Link to={`/users/${this.props.currentUser.id}`}>Change Password</Link>
+                    </li>
+                    <li>
+                      <a onClick={this.logout}>Log Out</a>
+                    </li> 
+                    <li>
+                      <a>Cancel</a>
+                    </li>                    
+                  </div>
+                </div>
+              </div>              
+              <div>
+                <span><b>15</b> posts</span>
+                <span><b>53</b> followers</span>
+                <span><b>35</b> following</span>
+              </div>
+              <div>
+                <a>www.personalwebsite.com</a>
+              </div>
+            </div>            
+          </div>
+          <div className="user-main-content">
+            <p>User_main_content</p>
+          </div>          
         </div>
       );
     } else {
       return (
-        <div>
+        <div className="user-profile-page">
           <NavBarContainer />
-          <h2>targeted_user_name</h2>
+          <div className="user-profile">
+            <FontAwesomeIcon id="user-pic" icon={['far', 'user']} size="7x" />
+            <div className="user-details">
+              <div className="username">
+                <h2>targeted_user_username</h2>
+              </div>
+              <div>
+                <span><b>15</b> posts</span>
+                <span><b>53</b> followers</span>
+                <span><b>35</b> following</span>
+              </div>
+              <div>
+                <a>www.personalwebsite.com</a>
+              </div>
+            </div>
+          </div>
+          <div className="user-main-content">
+            <p>User_main_content</p>
+          </div>
         </div>
       );
     }

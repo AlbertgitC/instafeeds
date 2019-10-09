@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from './store/store';
 import Root from "./components/root";
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+import { faCompass, faHeart, faUser} from '@fortawesome/free-regular-svg-icons'
 // import { login, signup, logout } from './actions/session_actions';
 
 
@@ -9,6 +12,7 @@ import Root from "./components/root";
 // window.logout = logout;
 
 document.addEventListener("DOMContentLoaded", () => {
+  library.add(fab, faCompass, faHeart, faUser)
 
   let store;
   if (window.currentUser) {

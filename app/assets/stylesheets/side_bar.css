@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:600|Cookie&display=swap');
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  float: right;
+  background: #FAFAFA;
+  width: 300px;
+  margin-right: 30px; 
+}
+
+.side-bar a {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  color: black;
+}
+
+.side-bar label {
+  color: #999999;
+  padding-left: 10px;
+}
+
+.side-bar > div {
+  margin-bottom: 12px;
+  border: 1px lightgrey solid;
+  border-radius: 3px;
+  background: #FFFFFF;
+}
+
+.side-bar > div:first-child {
+  background: #FAFAFA;
+  border: none;
+  margin: 20px 0 20px 0;
+}
+
+.side-bar li {
+  list-style: none;
+}
+
+.side-bar ul {
+  padding: 10px;
+}

@@ -10,7 +10,7 @@ import UserProfileContainer from './user_profile/user_profile_container';
 
 
 const App = () => (
-  <div>
+  <div className="App">
     <Switch>
       <ProtectedRoute exact path="/" component={IndexContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />

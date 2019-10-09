@@ -1,0 +1,62 @@
+.nav-bar {
+  display: flex;
+  height: 80px;
+  padding: 26px 20px;
+  justify-content: space-between;
+  border-bottom: 1px lightgrey solid;
+  background: #FFFFFF;
+}
+
+.nav-bar div:first-of-type{
+  display: flex;
+}
+
+.nav-bar h1 {
+  font-family: 'Cookie', cursive;
+  font-size: 36px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.nav-bar input {
+  width: 200px;
+  background: #FAFAFA;
+  font-size: 14px;
+  text-align: center;
+}
+
+.logo > img {
+  padding-right: 15px;
+  border-right: 1px black solid;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  width: 132px;
+  padding-left: 20px; 
+}
+
+.nav-menu a {
+  color: black;
+}
+
+.nav-bar button {
+  background: #3897F0;
+  border: none;
+  height: 30px;
+  padding: 5px 9px;
+}
+
+.nav-button {
+  display: flex;
+  justify-content: space-evenly;
+  width: 166px;
+}
+
+.nav-button a:last-child button {
+  background: white;
+  color: #3897F0;
+}
+
+

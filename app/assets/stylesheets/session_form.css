@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css?family=Barlow:700|Cookie&display=swap');
+
+.session-form {
+  text-align: center;
+  width: 350px;
+  border: 1px lightgrey solid;
+  border-radius: 1px;
+  background: #FFFFFF;
+  margin: 15px auto 0;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #999999;
+}
+
+.session-form > form > p {
+  font-family: 'Barlow', sans-serif;
+  font-size: 18px;
+  color: #999999;
+  border-bottom: 1px lightgrey solid;
+  padding-bottom: 20px;
+  margin: 0; 
+}
+
+.session-form form {
+  width: 270px;
+  margin: 0 40px;
+}
+
+.session-form input {
+  background: #FAFAFA;
+}
+
+.session-form h1 {
+  font-family: 'Cookie', cursive;
+  font-size: 55px;
+}
+
+.session-form button {
+  background: #3897F0;
+  width: 270px;
+}
+
+#errors {
+  margin: 0 0;
+}
