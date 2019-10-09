@@ -23,6 +23,7 @@ class SessionForm extends React.Component {
     this.props.processForm(user);
   }
 
+
   renderErrors() {
     return (
       <ul id="errors">
@@ -35,6 +36,7 @@ class SessionForm extends React.Component {
     );
   }
 
+
   render() {
     if (this.props.formType === 'Log In'){
       return (
@@ -42,7 +44,7 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <h1>Instafeeds</h1>
             <br />
-            <p>Please {this.props.formType} or {this.props.navLink}</p>
+            <p onClick={this.props.clearErrors}>Please {this.props.formType} or {this.props.navLink}</p>
             {this.renderErrors()}
             <div>                    
                 <input type="text"
@@ -89,7 +91,7 @@ class SessionForm extends React.Component {
             </div>
           </form>
           <div>
-            <p>Have an account? {this.props.navLink}</p>
+            <p onClick={this.props.clearErrors}>Have an account? {this.props.navLink}</p>
           </div>
         </div>
       );
