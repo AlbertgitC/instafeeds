@@ -14,9 +14,11 @@ class NavBar extends React.Component {
         <div className="nav-bar">
           <Link to="/">
             <div className="logo">
-            <img src="/assets/ig-logo-black.svg" />
-            <h1>Instafeeds</h1>
-          </div>
+              <span>
+                <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
+              </span>              
+              <h1>Instafeeds</h1>
+            </div>
           </Link>                    
           <input type="text" placeholder="&#128269; Search"/>
           <div className="nav-menu">            
@@ -37,7 +39,9 @@ class NavBar extends React.Component {
         <div className="nav-bar">
           <Link to="/">
             <div className="logo">
-              <img src="/assets/ig-logo-black.svg" />
+              <span>
+                <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
+              </span>
               <h1>Instafeeds</h1>
             </div>
           </Link>

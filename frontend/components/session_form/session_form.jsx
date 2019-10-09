@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
       email: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   update(field) {
@@ -36,6 +37,13 @@ class SessionForm extends React.Component {
     );
   }
 
+  demoLogin() {
+    this.props.processForm({
+      username: "DemoAccount",
+      password: "demo1234",
+      email: "DemoAccount"
+    });
+  }
 
   render() {
     if (this.props.formType === 'Log In'){
@@ -44,7 +52,6 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <h1>Instafeeds</h1>
             <br />
-            <p onClick={this.props.clearErrors}>Please {this.props.formType} or {this.props.navLink}</p>
             {this.renderErrors()}
             <div>                    
               <input type="text"
@@ -60,6 +67,11 @@ class SessionForm extends React.Component {
               <button>{this.props.formType}</button>
             </div>
           </form>
+          <div>
+            <p onClick={this.props.clearErrors}>Don't have an account? {this.props.navLink}</p>
+            <p>or</p>
+            <p onClick={this.demoLogin} id="demo">Demo Log In</p>
+          </div>
         </div>
       );
     } else {

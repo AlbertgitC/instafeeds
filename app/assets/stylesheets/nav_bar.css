@@ -15,7 +15,7 @@
   font-family: 'Cookie', cursive;
   font-size: 36px;
   margin: 0;
-  padding-left: 18px;
+  padding-left: 15px;
 }
 
 .nav-bar input {
@@ -25,7 +25,9 @@
   text-align: center;
 }
 
-.logo > img {
+.logo span {
+  height: 36px;
+  color: black;
   padding-right: 15px;
   border-right: 1px black solid;
 }

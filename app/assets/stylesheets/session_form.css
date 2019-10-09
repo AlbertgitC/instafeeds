@@ -42,6 +42,15 @@
   width: 270px;
 }
 
+#demo {
+  font-weight: bold;
+  color: #3897F0;
+}
+
+#demo:hover {
+  cursor: pointer;
+}
+
 #errors {
   margin: 0 0;
 }

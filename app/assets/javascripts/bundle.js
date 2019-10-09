@@ -370,9 +370,10 @@ function (_React$Component) {
           to: "/"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "logo"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "/assets/ig-logo-black.svg"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Instafeeds"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+          icon: ['fab', 'instagram'],
+          size: "2x"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Instafeeds"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           placeholder: "\uD83D\uDD0D Search"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -400,9 +401,10 @@ function (_React$Component) {
           to: "/"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "logo"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-          src: "/assets/ig-logo-black.svg"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Instafeeds"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_2__["FontAwesomeIcon"], {
+          icon: ['fab', 'instagram'],
+          size: "2x"
+        })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Instafeeds"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           placeholder: "\uD83D\uDD0D Search"
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -594,6 +596,7 @@ function (_React$Component) {
       email: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.demoLogin = _this.demoLogin.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -625,6 +628,15 @@ function (_React$Component) {
       }));
     }
   }, {
+    key: "demoLogin",
+    value: function demoLogin() {
+      this.props.processForm({
+        username: "DemoAccount",
+        password: "demo1234",
+        email: "DemoAccount"
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       if (this.props.formType === 'Log In') {
@@ -632,9 +644,7 @@ function (_React$Component) {
           className: "session-form"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
           onSubmit: this.handleSubmit
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Instafeeds"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-          onClick: this.props.clearErrors
-        }, "Please ", this.props.formType, " or ", this.props.navLink), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Instafeeds"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           type: "text",
           value: this.state.username,
           onChange: this.update('username'),
@@ -644,7 +654,12 @@ function (_React$Component) {
           value: this.state.password,
           onChange: this.update('password'),
           placeholder: "Password"
-        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, this.props.formType))));
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, this.props.formType))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: this.props.clearErrors
+        }, "Don't have an account? ", this.props.navLink), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "or"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          onClick: this.demoLogin,
+          id: "demo"
+        }, "Demo Log In")));
       } else {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "session-form"
