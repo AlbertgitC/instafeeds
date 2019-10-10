@@ -10,8 +10,20 @@ class UserProfile extends React.Component {
   constructor(props) {
     super(props);
 
+    this.userProfile = {};
     this.logout = this.logout.bind(this);
   }
+
+  componentDidMount() {
+    this.props.fetchUser(this.props.match.params.userId);
+  }
+
+  componentDidUpdate() {
+    if (!this.props.user) {
+      this.props.fetchUser(this.props.match.params.userId);
+    }
+  }
+  
 
   logout() {
     this.props.logout().then(
@@ -27,11 +39,11 @@ class UserProfile extends React.Component {
   closeNav() {
     document.getElementById("editNav").style.display = "none";
   }
-  
+
 
   render() {
-  
-    if (this.props.currentUser) {
+    if (!this.props.user) return null;
+    if (this.props.currentUser && this.props.currentUser.id === this.props.user.id) {
       return (
         <div className="user-profile-page">
           <NavBarContainer />
@@ -72,7 +84,7 @@ class UserProfile extends React.Component {
             <FontAwesomeIcon id="user-pic" icon={['far', 'user']} size="7x" />
             <div className="user-details">
               <div className="username">
-                <h2>targeted_user_username</h2>
+                <h2>{this.props.user.username}</h2>
               </div>
               <div>
                 <span><b>15</b> posts</span>
@@ -81,6 +93,7 @@ class UserProfile extends React.Component {
               </div>
               <div>
                 <a>www.personalwebsite.com</a>
+                <p>bios</p>
               </div>
             </div>
           </div>

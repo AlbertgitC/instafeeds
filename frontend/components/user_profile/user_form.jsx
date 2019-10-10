@@ -29,9 +29,9 @@ class UserEditForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
+    
     this.props.editUser(user).then(
-      this.props.history.push(`/users/${this.props.currentUser.id}`),
-      this.props.history.push(`/users/${this.props.currentUser.id}/edit`)
+      () => this.props.history.push(`/users/${this.props.currentUser.id}`)
     );
   }
 
@@ -67,7 +67,7 @@ class UserEditForm extends React.Component {
               placeholder="New password"
             />
             <button>Change Password</button>
-            <Link to={`/users/${this.props.currentUser.id}`} style={{ marginTop: '6px', fontFamily: "'Open Sans', sans- serif"}}>Cancel</Link>
+            <Link onClick={this.props.clearErrors} to={`/users/${this.props.currentUser.id}`} style={{ marginTop: '6px', fontFamily: "'Open Sans', sans- serif"}}>Cancel</Link>
           </div>
         </form>
       </div>

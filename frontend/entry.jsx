@@ -6,8 +6,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faCompass, faHeart, faUser} from '@fortawesome/free-regular-svg-icons'
 // import { login, signup, logout } from './actions/session_actions';
+// import { fetchUser } from './actions/users_actions';
 
-
+// window.fetchUser = fetchUser;
 // window.login = login;
 // window.logout = logout;
 
