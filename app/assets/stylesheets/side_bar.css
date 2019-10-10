@@ -24,7 +24,7 @@
   padding: 4px 16px;
 }
 
-.side-bar > div {
+.side-bar div {
   margin-bottom: 12px;
   border: 1px lightgrey solid;
   border-radius: 3px;
@@ -34,7 +34,7 @@
 .side-bar > div:first-child {
   background: #FAFAFA;
   border: none;
-  margin: 20px 0 20px 0;
+  margin: 130px 0 20px 0;
 }
 
 .side-bar li {

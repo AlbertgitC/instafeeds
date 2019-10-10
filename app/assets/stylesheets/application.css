@@ -68,8 +68,11 @@ html {
 }
 
 .App {
-  background: #FAFAFA;
+	background: #FAFAFA;
+  max-width: 970px;
+  margin: 0 auto;
 }
+
 
 a {
 	text-decoration: none;

@@ -12,8 +12,8 @@ class Index extends React.Component {
   render() {
     
     return (
-      <div className="index-bg">
-        <div className="index-main">
+      <div>
+        <div>
           <NavBarContainer />
           <SideBarContainer />
         </div>

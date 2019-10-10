@@ -20,6 +20,7 @@ const App = () => (
       <Route path="/users/:userId" component={UserProfileContainer} />
     </Switch>
   </div>
+  
 );
 
 export default App;
