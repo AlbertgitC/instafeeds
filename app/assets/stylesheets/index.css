@@ -1,0 +1,10 @@
+.index-bg {
+  border-bottom: 1px lightgrey solid;
+  background: #FFFFFF;
+  height: 77px;
+}
+
+.index-main {
+  max-width: 970px;
+  margin: 0 auto;
+}

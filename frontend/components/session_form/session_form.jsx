@@ -53,7 +53,7 @@ class SessionForm extends React.Component {
             <h1>Instafeeds</h1>
             <br />
             {this.renderErrors()}
-            <div>                    
+            <div className="input-field">                    
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
@@ -82,7 +82,7 @@ class SessionForm extends React.Component {
             <p>Sign up to see what all the pets are up to!</p>                       
             <br />
             {this.renderErrors()}
-            <div>      
+            <div className="input-field">      
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}

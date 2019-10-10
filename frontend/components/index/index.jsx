@@ -12,10 +12,12 @@ class Index extends React.Component {
   render() {
     
     return (
-      <div>
-        <NavBarContainer />
-        <SideBarContainer />
-      </div>
+      <div className="index-bg">
+        <div className="index-main">
+          <NavBarContainer />
+          <SideBarContainer />
+        </div>
+      </div>      
     );
   }
   

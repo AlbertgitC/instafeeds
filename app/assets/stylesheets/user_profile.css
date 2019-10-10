@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Barlow:400|Cookie&display=swap');
-
 
 .user-profile-page {
   background: #FAFAFA; 
@@ -7,71 +5,86 @@
 
 .user-profile {
   display: flex;
-  width: 950px;
+  max-width: 970px;
   align-items: center;
   justify-content: center;
   margin: 60px auto;
 }
 
-.user-dropdown {
-  position: relative;
-  display: inline-block;
+.overlay { 
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: fixed; 
+  z-index: 1; 
+  left: 0;
+  top: 0; 
+  background-color: rgba(0,0,0,.65);
+  overflow-x: hidden; 
 }
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 240px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-  list-style: none;
+.overlay-content {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  width: 400px;
+  position: relative;
+  top: 25%; 
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 0 solid #000; 
+}
+
+.overlay a {
+  padding-top: 24px; 
+  height: 40px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #818181;
+  font-family: 'Open Sans', sans-serif;
+  color: black;
+  cursor: pointer;
   border-bottom: 1px lightgrey solid; 
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content li {
-  border-bottom: 1px lightgrey solid;
-}
-
-.dropdown-content li:hover {
-  cursor: pointer;
-}
-
-.dropbtn {
-  color:black;
-  font-size: 14px;
-  background: transparent;
-  border: 1px lightgrey solid;
-  border-radius: 3px;
-}
-
-.dropbtn:hover {
-  background: transparent;
-  color: black;
+.overlay a:last-of-type {
+  border-bottom: none;
 }
 
 .username {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: 250px;
+  
 }
 
 .username h2 {
   font-size: 28px;
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.username button {
+  background-color: transparent;
+  border: 1px solid rgba(var(--d0b,219,219,219),1);
+  border-radius: 4px;
+  color: rgba(var(--f07,38,38,38),1);
+  padding: 5px 9px;
+  width: 100px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 80px;
 }
 
 .user-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   margin: 0 10px 0 30px;
-  width: 600px;
+  height: 150px;
+  width: 400px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
 }
 
 .user-details > div:nth-child(2) {

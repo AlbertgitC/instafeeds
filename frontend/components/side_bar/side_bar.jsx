@@ -18,7 +18,7 @@ class SideBar extends React.Component {
             <span>{this.props.currentUser.username}</span>
           </Link>
         </div>
-        <div>
+        <div className="side-bar-section">
           <label>Stories</label>
           <ul>
             <li>
@@ -41,7 +41,7 @@ class SideBar extends React.Component {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="side-bar-section">
           <label>Suggestions For You</label>
           <ul>
             <li>

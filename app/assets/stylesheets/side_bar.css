@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Barlow:600|Cookie&display=swap');
+
 
 .side-bar {
   display: flex;
@@ -19,8 +19,9 @@
 }
 
 .side-bar label {
+  font-family: 'Barlow', sans-serif;
   color: #999999;
-  padding-left: 10px;
+  padding: 4px 16px;
 }
 
 .side-bar > div {
@@ -42,4 +43,8 @@
 
 .side-bar ul {
   padding: 10px;
+}
+
+.side-bar-section {
+  padding-top: 12px; 
 }

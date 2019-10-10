@@ -3,6 +3,7 @@ import UserProfile from './user_profile';
 import { logout } from '../../actions/session_actions';
 
 
+
 const mapStateToProps = ({ entities, session }) => ({
   users: entities.users,
   currentUser: entities.users[session.currentUserId]
