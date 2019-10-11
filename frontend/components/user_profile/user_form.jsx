@@ -17,6 +17,8 @@ class UserEditForm extends React.Component {
     this.setState({
       username: this.props.currentUser.username
     })
+
+    this.props.clearErrors();
   }
 
 
@@ -56,13 +58,11 @@ class UserEditForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           {this.renderErrors()}
           <div className="input-field">
-            <input type="password"
-              value={this.state.password}
+            <input type="password"             
               onChange={this.update('password')}
               placeholder="Current password"
             />
-            <input type="password"
-              value={this.state.new_password}
+            <input type="password"              
               onChange={this.update('new_password')}
               placeholder="New password"
             />

@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id              :integer          not null, primary key
+#  username        :string           not null
+#  email           :string           not null
+#  password_digest :string           not null
+#  session_token   :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  website         :string
+#  bio             :text
+#
+
 class User < ApplicationRecord
   attr_reader :password
 
@@ -7,7 +22,25 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  # schema relations here
+  has_many :authored_feeds,
+    class_name: "Feed",
+    foreign_key: :user_id
+
+  has_many :authored_comments,
+    class_name: "Comment",
+    foreign_key: :user_id
+  
+  has_many :authored_likes,
+    class_name: "Like",
+    foreign_key: :user_id
+
+  has_many :followers, 
+    class_name: "Follow",
+    foreign_key: :user_id
+    
+  has_many :following, 
+    class_name: "Follow", 
+    foreign_key: :follower_id
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

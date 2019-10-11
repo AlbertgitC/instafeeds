@@ -1013,6 +1013,7 @@ function (_React$Component) {
       this.setState({
         username: this.props.currentUser.username
       });
+      this.props.clearErrors();
     }
   }, {
     key: "update",
@@ -1056,12 +1057,10 @@ function (_React$Component) {
         className: "input-field"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
-        value: this.state.password,
         onChange: this.update('password'),
         placeholder: "Current password"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "password",
-        value: this.state.new_password,
         onChange: this.update('new_password'),
         placeholder: "New password"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Change Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1200,7 +1199,11 @@ function (_React$Component) {
   }, {
     key: "logout",
     value: function logout() {
-      this.props.logout().then(this.props.history.push('/login'));
+      var _this2 = this;
+
+      this.props.logout().then(function () {
+        return _this2.props.history.push('/login');
+      });
     }
   }, {
     key: "openNav",

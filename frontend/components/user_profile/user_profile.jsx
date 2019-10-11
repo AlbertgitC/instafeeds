@@ -27,7 +27,7 @@ class UserProfile extends React.Component {
 
   logout() {
     this.props.logout().then(
-      this.props.history.push('/login')
+      () => this.props.history.push('/login')
     );
   }
 
