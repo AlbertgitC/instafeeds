@@ -964,6 +964,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../nav_bar/nav_bar_container */ "./frontend/components/nav_bar/nav_bar_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -987,6 +988,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var UserEditForm =
 /*#__PURE__*/
 function (_React$Component) {
@@ -999,9 +1001,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(UserEditForm).call(this, props));
     _this.state = {
+      id: "",
       username: "",
       password: "",
-      new_password: ""
+      new_password: "",
+      email: "",
+      website: "",
+      bio: ""
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
@@ -1011,7 +1017,11 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.setState({
-        username: this.props.currentUser.username
+        id: this.props.currentUser.id,
+        username: this.props.currentUser.username,
+        email: this.props.currentUser.email,
+        website: this.props.currentUser.website || "",
+        bio: this.props.currentUser.bio || ""
       });
       this.props.clearErrors();
     }
@@ -1036,6 +1046,34 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "resetPassword",
+    value: function resetPassword() {
+      this.setState({
+        password: "",
+        new_password: ""
+      });
+    }
+  }, {
+    key: "openEdit",
+    value: function openEdit() {
+      document.getElementById("editAll").style.display = "flex";
+    }
+  }, {
+    key: "closeEdit",
+    value: function closeEdit() {
+      document.getElementById("editAll").style.display = "none";
+    }
+  }, {
+    key: "openEditPw",
+    value: function openEditPw() {
+      document.getElementById("editPW").style.display = "flex";
+    }
+  }, {
+    key: "closeEditPw",
+    value: function closeEditPw() {
+      document.getElementById("editPW").style.display = "none";
+    }
+  }, {
     key: "renderErrors",
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
@@ -1049,28 +1087,68 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "session-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-        onSubmit: this.handleSubmit
-      }, this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "input-field"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        onChange: this.update('password'),
-        placeholder: "Current password"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "password",
-        onChange: this.update('new_password'),
-        placeholder: "New password"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Change Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-        onClick: this.props.clearErrors,
-        to: "/users/".concat(this.props.currentUser.id),
-        style: {
-          marginTop: '6px',
-          fontFamily: "'Open Sans', sans- serif"
+      var _this4 = this;
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_nav_bar_nav_bar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-side-menu"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        onClick: function onClick() {
+          _this4.openEdit();
+
+          _this4.closeEditPw();
+
+          _this4.props.clearErrors();
+
+          _this4.resetPassword();
         }
-      }, "Cancel"))));
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Edit Profile")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        onClick: function onClick() {
+          _this4.openEditPw();
+
+          _this4.closeEdit();
+
+          _this4.props.clearErrors();
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Change Password")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-main"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "edit-profile",
+        id: "editAll"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "editPicHolder"
+      }, "head pic"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.currentUser.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Username", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.username,
+        onChange: this.update('username')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Website", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.website,
+        onChange: this.update('website')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Bio"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        value: this.state.bio,
+        onChange: this.update('bio')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Email", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "text",
+        value: this.state.email,
+        onChange: this.update('email')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Submit"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "editPW",
+        className: "edit-password"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: "editPicHolder"
+      }, "head pic"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, this.props.currentUser.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: this.handleSubmit
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Old Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        onChange: this.update('password')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "New Password", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "password",
+        onChange: this.update('new_password')
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Change Password"))), this.renderErrors())));
     }
   }]);
 
@@ -1242,11 +1320,11 @@ function (_React$Component) {
           className: "overlay-content"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
           to: "/users/".concat(this.props.currentUser.id, "/edit")
-        }, "Change Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        }, "Edit Profile/Change Password"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           onClick: this.logout
         }, "Log Out"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
           onClick: this.closeNav
-        }, "Cancel")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "15"), " posts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "53"), " followers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "35"), " following")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "www.personalwebsite.com")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, "Cancel")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "15"), " posts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "53"), " followers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "35"), " following")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.currentUser.website), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.currentUser.bio)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-main-content"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "User_main_content")));
       } else {
@@ -1262,7 +1340,7 @@ function (_React$Component) {
           className: "user-details"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "username"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.user.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "15"), " posts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "53"), " followers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "35"), " following")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", null, "www.personalwebsite.com"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "bios")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, this.props.user.username)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "15"), " posts"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "53"), " followers"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "35"), " following")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.user.website), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, this.props.user.bio)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-main-content"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "User_main_content")));
       }

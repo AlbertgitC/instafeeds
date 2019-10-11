@@ -23,7 +23,7 @@ class UserProfile extends React.Component {
       this.props.fetchUser(this.props.match.params.userId);
     }
   }
-  
+
 
   logout() {
     this.props.logout().then(
@@ -55,7 +55,7 @@ class UserProfile extends React.Component {
                 <button onClick={this.openNav}>Edit Profile</button>
                 <div id="editNav" className="overlay">                  
                   <div className="overlay-content">                  
-                    <Link to={`/users/${this.props.currentUser.id}/edit`}>Change Password</Link>                    
+                    <Link to={`/users/${this.props.currentUser.id}/edit`}>Edit Profile/Change Password</Link>                    
                     <a onClick={this.logout}>Log Out</a>                    
                     <a onClick={this.closeNav}>Cancel</a>                    
                   </div>
@@ -67,7 +67,8 @@ class UserProfile extends React.Component {
                 <span><b>35</b> following</span>
               </div>
               <div>
-                <a>www.personalwebsite.com</a>
+                <p>{this.props.currentUser.website}</p>
+                <p>{this.props.currentUser.bio}</p>
               </div>
             </div>            
           </div>
@@ -92,8 +93,8 @@ class UserProfile extends React.Component {
                 <span><b>35</b> following</span>
               </div>
               <div>
-                <a>www.personalwebsite.com</a>
-                <p>bios</p>
+                <p>{this.props.user.website}</p>
+                <p>{this.props.user.bio}</p>
               </div>
             </div>
           </div>

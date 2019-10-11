@@ -1,0 +1,187 @@
+.edit-form {
+  height: 680px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  display: flex;
+  margin-top: 140px;
+  background: #FFFFFF; 
+}
+
+.edit-side-menu {
+  width: 240px;
+  height: 100%;
+  border-right: 1px solid lightgrey;
+}
+
+.edit-side-menu li {
+  font-family: 'Open Sans', sans-serif;
+  height: 66px;
+  width: 100%;
+  line-height: 64px;
+}
+
+.edit-side-menu span {
+  margin-left: 32px;
+}
+
+.edit-side-menu li:hover {
+  background: #FAFAFA;
+  font-weight: bold;
+  border-left: 2px solid black;
+  float: right;
+  cursor: pointer;
+}
+
+.edit-main {
+  width: 100%;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#editPicHolder {
+  max-width: 50px;
+  min-width: 50px;
+  height:50px;
+  border: 2px solid black;
+  margin-left: 74px;
+}
+
+.edit-profile button {
+  background: #3897F0;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold; 
+  border-radius: 4px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding: 5px 9px;
+  margin: 30px 235px 10px 0;
+}
+
+
+
+.edit-profile {
+  padding: 32px 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-profile h1 {
+  width: 100%;
+  font-size: 22px;
+  margin: 10px 0 0 75px; 
+}
+
+
+.edit-profile > div:first-child{
+  display: flex;
+  width: 100%;
+}
+
+.edit-profile form {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 32px 147px 0 0;
+}
+
+.edit-profile form div {
+  margin: 16px 0;
+}
+
+
+
+.edit-profile form div:nth-child(3) span {
+  vertical-align: top;
+}
+
+.edit-profile input {
+  font-size: 16px;
+  border: 1px solid #efefef;
+  border-radius: 2px;
+  width: 300px;
+  height: 34px;
+  margin-left: 30px;
+}
+
+.edit-profile textarea {
+  font-size: 16px;
+  border: 1px solid #efefef;
+  border-radius: 2px;
+  width: 298px;
+  height: 68px;
+  margin-left: 30px;
+}
+
+.edit-profile button {
+  background: #3897F0;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold; 
+  border-radius: 4px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding: 5px 9px;
+  margin: 30px 252px 10px 0;
+}
+
+#editPW {
+  display: none;
+}
+
+.edit-password {
+  padding: 32px 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-password form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 30px;
+}
+
+.edit-password label {
+  font-weight: bold;
+  
+}
+
+.edit-password input {
+  border: 1px solid #efefef;
+  border-radius: 3px;
+  background: #FAFAFA;
+  width: 442px;
+  height: 40px;
+  margin: 16px 0 16px 32px;
+  font-size: 16px; 
+}
+
+.edit-password button {
+  background: #3897F0;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold; 
+  border-radius: 4px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding: 5px 9px;
+  margin: 30px 302px 10px 0;
+}
+
+.edit-password div:first-child{
+  display: flex;
+  width: 590px;
+}
+
+.edit-password h1 {
+  width: 100%;
+  font-size: 22px;
+  margin: 10px 0 0 54px; 
+}
+
+#errors {
+  color: #3897F0;
+  margin-left: 20px;
+}
+
