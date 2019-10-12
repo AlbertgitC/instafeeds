@@ -1,7 +1,7 @@
 
 class Api::UsersController < ApplicationController
   def create
-    @user = User.new(user_params)
+    @user = User.new(create_user_params)
     if @user.save
       login(@user)
       render "api/users/show"
@@ -22,10 +22,11 @@ class Api::UsersController < ApplicationController
 
   def update
     
-    if !user_params[:password] == ""
+    if user_password_params[:password] != ""
+      
       @user = User.find_by_credentials(
-        user_params[:username],
-        user_params[:password]
+        user_password_params[:username],
+        user_password_params[:password]
       )
 
       if !@user
@@ -33,21 +34,19 @@ class Api::UsersController < ApplicationController
         return
       end
 
-      new_user_params = user_params
-      new_user_params[:password] = user_params[:new_password]
-      new_user_params.delete("new_password")
+      
+      @user.password = user_password_params[:new_password]
+      
       
 
-      if @user.update(new_user_params)
+      if @user.save
         render "api/users/show"      
       else
         render json: @user.errors.full_messages, status: 422
       end
     else
-      @user = User.find_by(id: user_params[:id])
+      @user = current_user
       new_user_params = user_params
-      new_user_params.delete("new_password")
-      new_user_params.delete("password")
   
       if @user.update(new_user_params)
         render "api/users/show"      
@@ -59,6 +58,12 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:id, :username, :password, :new_password, :email, :website, :bio)
+    params.require(:user).permit(:username, :email, :website, :bio)
+  end
+  def user_password_params
+    params.require(:user).permit(:username, :password, :new_password)
+  end
+  def create_user_params
+    params.require(:user).permit(:username, :password, :email)
   end
 end
