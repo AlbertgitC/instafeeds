@@ -21,7 +21,13 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    if (this.props.formType === 'Log In') {
+      this.props.processForm(user).then(
+        (user) => this.props.fetchFollowing(user.id)
+      );
+    } else {
+      this.props.processForm(user);
+    }
   }
 
 
@@ -38,7 +44,7 @@ class SessionForm extends React.Component {
   }
 
   demoLogin() {
-    this.props.processForm({
+    this.setState({
       username: "DemoAccount",
       password: "demo1234",
       email: "DemoAccount"
@@ -70,7 +76,9 @@ class SessionForm extends React.Component {
           <div>
             <p onClick={this.props.clearErrors}>Don't have an account? {this.props.navLink}</p>
             <p>or</p>
-            <p onClick={this.demoLogin} id="demo">Demo Log In</p>
+            <form onSubmit={this.handleSubmit}>
+              <button onClick={this.demoLogin} id="demo">Demo Log In</button>
+            </form>
           </div>
         </div>
       );
