@@ -52,7 +52,10 @@ class UserProfile extends React.Component {
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.currentUser.username}</h2>
-                <button onClick={this.openNav}>Edit Profile</button>
+                <Link to={`/users/${this.props.currentUser.id}/edit`}>
+                  <button>Edit Profile</button>
+                </Link>                
+                <FontAwesomeIcon id="gear" icon={['fas', 'cog']} size="2x" onClick={this.openNav}/>
                 <div id="editNav" className="overlay">                  
                   <div className="overlay-content">                  
                     <Link to={`/users/${this.props.currentUser.id}/edit`}>Edit Profile/Change Password</Link>                    
