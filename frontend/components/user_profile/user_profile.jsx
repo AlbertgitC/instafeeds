@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FollowContainer from '../follow/follow_container';
 
 
 
@@ -89,6 +90,7 @@ class UserProfile extends React.Component {
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.user.username}</h2>
+                <FollowContainer props={this.props}/>
               </div>
               <div>
                 <span><b>15</b> posts</span>
