@@ -2,6 +2,8 @@
   <script id="bootstrap-current-user" type="text/javascript">
   	window.currentUser = <%= render("api/users/user.json.jbuilder",
   		user: current_user).html_safe %>
+    window.currentFollowing = <%= render("api/follows/show_following.json.jbuilder",
+  		following: current_user_following).html_safe %>
   </script>
 <% end %>
 

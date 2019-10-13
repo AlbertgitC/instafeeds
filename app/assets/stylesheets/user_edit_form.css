@@ -7,27 +7,32 @@
   background: #FFFFFF; 
 }
 
-.edit-side-menu {
+.edit-profile-side {
   width: 240px;
   height: 100%;
   border-right: 1px solid lightgrey;
 }
 
-.edit-side-menu li {
+.edit-profile-side li {
   font-family: 'Open Sans', sans-serif;
   height: 66px;
   width: 100%;
   line-height: 64px;
 }
 
-.edit-side-menu span {
+.edit-profile-side > ul > li {
+  border-left: 2px solid black;
+}
+
+.edit-profile-side span {
+  color: black;
   margin-left: 32px;
 }
 
-.edit-side-menu li:hover {
+.edit-profile-side li:hover {
   background: #FAFAFA;
   font-weight: bold;
-  border-left: 2px solid black;
+  border-left: 2px solid lightgrey;
   float: right;
   cursor: pointer;
 }
@@ -125,9 +130,9 @@
   margin: 30px 252px 10px 0;
 }
 
-#editPW {
+/* #editPW {
   display: none;
-}
+} */
 
 .edit-password {
   padding: 32px 60px;
@@ -151,7 +156,7 @@
   border: 1px solid #efefef;
   border-radius: 3px;
   background: #FAFAFA;
-  width: 442px;
+  width: 390px;
   height: 40px;
   margin: 16px 0 16px 32px;
   font-size: 16px; 

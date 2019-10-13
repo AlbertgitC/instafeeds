@@ -6,13 +6,13 @@ class UserEditForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
-      username: "",
-      password: "",
-      new_password: "",
-      email: "",
-      website: "",
-      bio: ""
+      user: {
+        username: "",
+        email: "",
+        website: "",
+        bio: ""
+      },
+      formType: "editInfo"
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,21 +20,32 @@ class UserEditForm extends React.Component {
 
   componentDidMount() {
     this.setState({
-      id: this.props.currentUser.id,
-      username: this.props.currentUser.username,
-      email: this.props.currentUser.email,
-      website: this.props.currentUser.website || "",
-      bio: this.props.currentUser.bio || ""
-    })
+      user: {
+        username: this.props.currentUser.username,
+        email: this.props.currentUser.email,
+        website: this.props.currentUser.website || "",
+        bio: this.props.currentUser.bio || ""
+      }
+    });
 
     this.props.clearErrors();
   }
 
 
+  // update(field) {
+  //   return e => this.setState({
+  //     user: {
+  //       [field]: e.currentTarget.value
+  //     }
+  //   });
+  // }
+
   update(field) {
-    return e => this.setState({
-      [field]: e.currentTarget.value
-    });
+    return e => {
+      const user = JSON.parse(JSON.stringify(this.state.user));
+      user[field] = e.currentTarget.value;
+      this.setState({user: user});
+    };
   }
 
   handleSubmit(e) {
@@ -46,25 +57,25 @@ class UserEditForm extends React.Component {
     );
   }
 
-  resetPassword() {
-    this.setState({password: "", new_password: ""});
-  }
+  // resetPassword() {
+  //   this.setState({password: "", new_password: ""});
+  // }
 
-  openEdit() {
-    document.getElementById("editAll").style.display = "flex";
-  }
+  // openEdit() {
+  //   document.getElementById("editAll").style.display = "flex";
+  // }
 
-  closeEdit() {
-    document.getElementById("editAll").style.display = "none";
-  }
+  // closeEdit() {
+  //   document.getElementById("editAll").style.display = "none";
+  // }
 
-  openEditPw() {
-    document.getElementById("editPW").style.display = "flex";
-  }
+  // openEditPw() {
+  //   document.getElementById("editPW").style.display = "flex";
+  // }
 
-  closeEditPw() {
-    document.getElementById("editPW").style.display = "none";
-  }
+  // closeEditPw() {
+  //   document.getElementById("editPW").style.display = "none";
+  // }
 
   renderErrors() {
     
@@ -79,21 +90,24 @@ class UserEditForm extends React.Component {
     );
   }
 
-
+  
   render() {
+    
     return (
       <div>
         <NavBarContainer />
         <div className="edit-form">
         
-          <div className="edit-side-menu">
+          <div className="edit-profile-side">
             <ul>
-              <li onClick={() => { this.openEdit(); this.closeEditPw(); this.props.clearErrors(); this.resetPassword()}}>
+              <li>
                 <span>Edit Profile</span>
-              </li>
-              <li onClick={() => { this.openEditPw(); this.closeEdit(); this.props.clearErrors()}}>
-                <span>Change Password</span>
-              </li>
+              </li>              
+              <Link to={`/users/${this.props.currentUser.id}/editPw`}>
+                <li>
+                  <span>Change Password</span>
+                </li>                   
+              </Link>              
             </ul>
           </div>
           <div className="edit-main">
@@ -104,43 +118,23 @@ class UserEditForm extends React.Component {
               </div>
               <form onSubmit={this.handleSubmit}>
                 <div>Username
-                  <input type="text" value={this.state.username} onChange={this.update('username')}/>
+                  <input type="text" value={this.state.user.username} onChange={this.update('username')}/>
                 </div>
                 <div>Website
-                  <input type="text" value={this.state.website} onChange={this.update('website')}/>
+                  <input type="text" value={this.state.user.website} onChange={this.update('website')}/>
                 </div>
                 <div>
                   <span>Bio</span>
-                  <textarea value={this.state.bio} onChange={this.update('bio')}></textarea>
+                  <textarea value={this.state.user.bio} onChange={this.update('bio')}></textarea>
                 </div>
                 <div>Email
-                  <input type="text" value={this.state.email} onChange={this.update('email')}/>
+                  <input type="text" value={this.state.user.email} onChange={this.update('email')}/>
                 </div>
                 <button>Submit</button>
               </form>              
             </div>
-            <div id="editPW" className="edit-password">
-              <div>
-                <div id="editPicHolder">head pic</div> 
-                <h1>{this.props.currentUser.username}</h1>
-              </div>
-              <form onSubmit={this.handleSubmit}>
-                <label>Old Password
-                  <input type="password"             
-                  onChange={this.update('password')}
-                />
-                </label>                
-                <label>New Password
-                  <input type="password"              
-                  onChange={this.update('new_password')}
-                />
-                </label>                
-                <button>Change Password</button>
-              </form>
-            </div>
             {this.renderErrors()}
           </div>
-          
         </div>
       </div>   
     );

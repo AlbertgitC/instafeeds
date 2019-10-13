@@ -1,4 +1,3 @@
-
 if @following.length == 0
   json.set! :follower_id, current_user.id
   json.set! :followingArr, []
@@ -7,4 +6,3 @@ else
   newFollowing = @following.map { |follow| follow.followed_id }
   json.set! :followingArr, newFollowing
 end
-

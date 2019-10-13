@@ -6,10 +6,12 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { faCompass, faHeart, faUser} from '@fortawesome/free-regular-svg-icons';
+import { merge } from 'lodash';
+
 // import { login, signup, logout } from './actions/session_actions';
 // import { fetchUser } from './actions/users_actions';
 
-// window.fetchUser = fetchUser;
+
 // window.login = login;
 // window.logout = logout;
 
@@ -18,12 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let store;
   if (window.currentUser) {
-    const preloadedState = {
+    
+    const following = {
+      entities: {
+        users: { [window.currentUser.id]: window.currentFollowing }
+      }
+    };
+    
+    const userState = {
       entities: {
         users: { [window.currentUser.id]: window.currentUser }
       },
       session: { currentUserId: window.currentUser.id }
     };
+
+    const preloadedState = merge(userState, following);
+    
     store = configureStore(preloadedState);
     delete window.currentUser;
   } else {

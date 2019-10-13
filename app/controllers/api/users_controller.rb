@@ -22,20 +22,21 @@ class Api::UsersController < ApplicationController
 
   def update
     
-    if user_password_params[:password] != ""
+    if user_password_params[:formType] == "editPassword"
       
       @user = User.find_by_credentials(
-        user_password_params[:username],
-        user_password_params[:password]
+        user_password_params[:user][:username],
+        user_password_params[:user][:password]
       )
 
       if !@user
-        render json: ["Invalid username or password"], status: 401
-        return
+        return render json: ["Invalid credentials"], status: 401
+      elsif user_password_params[:user][:new_password] != user_password_params[:user][:new_password2]
+        return render json: ["New password does not match confirm password"], status: 422
       end
 
       
-      @user.password = user_password_params[:new_password]
+      @user.password = user_password_params[:user][:new_password]
       
       
 
@@ -44,10 +45,11 @@ class Api::UsersController < ApplicationController
       else
         render json: @user.errors.full_messages, status: 422
       end
-    else
+    elsif user_params[:formType] == "editInfo"
+      
       @user = current_user
-      new_user_params = user_params
-  
+      new_user_params = user_params[:user]
+      
       if @user.update(new_user_params)
         render "api/users/show"      
       else
@@ -58,10 +60,10 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :website, :bio)
+    params.require(:user).permit({:user => [:username, :email, :website, :bio]}, :formType)
   end
   def user_password_params
-    params.require(:user).permit(:username, :password, :new_password)
+    params.require(:user).permit({:user => [:username, :password, :new_password, :new_password2]}, :formType)
   end
   def create_user_params
     params.require(:user).permit(:username, :password, :email)
