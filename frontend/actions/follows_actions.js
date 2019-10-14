@@ -1,15 +1,6 @@
 import * as API from '../util/follows_api_util';
 
-
-export const RECEIVE_FOLLOW = "RECEIVE_FOLLOW";
 export const RECEIVE_FOLLOWING = "RECEIVE_FOLLOWING";
-
-const receiveFollow = (follow) => {
-  return {
-    type: RECEIVE_FOLLOW,
-    follow
-  };
-}
 
 const receiveFollowing = (following) => {
   return {
@@ -21,7 +12,13 @@ const receiveFollowing = (following) => {
 
 export const followUser = follow => dispatch => {
   return API.followUser(follow).then(
-    follow => dispatch(receiveFollow(follow))
+    following => dispatch(receiveFollowing(following))
+  );
+}
+
+export const unfollowUser = follow => dispatch => {
+  return API.unfollowUser(follow).then(
+    following => dispatch(receiveFollowing(following))
   );
 }
 

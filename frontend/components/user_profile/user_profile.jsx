@@ -10,21 +10,26 @@ class UserProfile extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.state;
     this.userProfile = {};
     this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId);
+    this.props.fetchFollowing(this.props.match.params.userId);
   }
 
   componentDidUpdate() {
     if (!this.props.user) {
       this.props.fetchUser(this.props.match.params.userId);
+      this.props.fetchFollowing(this.props.match.params.userId);
     }
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
 
   logout() {
     this.props.logout().then(
@@ -32,6 +37,13 @@ class UserProfile extends React.Component {
     );
   }
 
+  followingNum() {
+    if (!this.props.user.followedUserIds)
+      return 0;
+    else {
+      return this.props.user.followedUserIds.length;
+    }
+  }
 
   openNav() {
     document.getElementById("editNav").style.display = "block";
@@ -43,7 +55,7 @@ class UserProfile extends React.Component {
 
 
   render() {
-    if (!this.props.user) return null;
+    if (!this.props.user || !this.props.user.username) return null;
     if (this.props.currentUser && this.props.currentUser.id === this.props.user.id) {
       return (
         <div className="user-profile-page">
@@ -54,7 +66,7 @@ class UserProfile extends React.Component {
               <div className="username">
                 <h2>{this.props.currentUser.username}</h2>
                 <Link to={`/users/${this.props.currentUser.id}/edit`}>
-                  <button>Edit Profile</button>
+                  <button id="edit-button">Edit Profile</button>
                 </Link>                
                 <FontAwesomeIcon id="gear" icon={['fas', 'cog']} size="2x" onClick={this.openNav}/>
                 <div id="editNav" className="overlay">                  
@@ -67,8 +79,8 @@ class UserProfile extends React.Component {
               </div>              
               <div>
                 <span><b>15</b> posts</span>
-                <span><b>53</b> followers</span>
-                <span><b>35</b> following</span>
+                <span><b>53</b> followers</span>                
+                <span><b>{this.props.currentUser.followedUserIds.length}</b> following</span>
               </div>
               <div>
                 <p>{this.props.currentUser.website}</p>
@@ -90,12 +102,12 @@ class UserProfile extends React.Component {
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.user.username}</h2>
-                <FollowContainer props={this.props}/>
+                <FollowContainer user={this.props.user} currentUser={this.props.currentUser} history={this.props.history}/>
               </div>
               <div>
                 <span><b>15</b> posts</span>
                 <span><b>53</b> followers</span>
-                <span><b>35</b> following</span>
+                <span><b>{this.followingNum()}</b> following</span>
               </div>
               <div>
                 <p>{this.props.user.website}</p>

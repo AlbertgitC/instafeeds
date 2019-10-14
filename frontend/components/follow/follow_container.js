@@ -1,20 +1,21 @@
 import { connect } from 'react-redux';
 import Follow from './follow';
-import { followUser } from '../../actions/follows_actions';
+import { followUser, unfollowUser } from '../../actions/follows_actions';
 
 
 
 
-const mapStateToProps = ({ entities, session }, ownProps) => {
+const mapStateToProps = (state) => {
   return {
-    user: entities.users[ownProps.props.match.params.userId],
-    currentUser: entities.users[session.currentUserId]
+    // user: entities.users[ownProps.props.match.params.userId],
+    // currentUser: entities.users[session.currentUserId]
   };
 };
 
 const mapDipatchToProps = dispatch => {
   return {
-    followUser: follow => dispatch(followUser(follow))
+    followUser: follow => dispatch(followUser(follow)),
+    unfollowUser: follow => dispatch(unfollowUser(follow))
   };
 };
 

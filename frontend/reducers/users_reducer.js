@@ -10,10 +10,9 @@ export default (state = {}, action) => {
       return merge({}, state, { [action.user.id]: action.user });
     case RECEIVE_FETCHED_USER:
       return merge({}, state, { [action.user.id]: action.user });
-    case RECEIVE_FOLLOW:
-      return merge({}, state, { [action.follow.follower_id]: { followedUserIds: [action.follow.followed_id] } });
     case RECEIVE_FOLLOWING:
-      return merge({}, state, { [action.following.follower_id]: { followedUserIds: action.following.followingArr } });
+      const prevState = Object.assign({}, state);
+      return merge({}, prevState, { [action.following.follower_id]: { followedUserIds: action.following.followingArr } });
     default:
       return state;
   }

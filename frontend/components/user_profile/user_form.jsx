@@ -31,15 +31,6 @@ class UserEditForm extends React.Component {
     this.props.clearErrors();
   }
 
-
-  // update(field) {
-  //   return e => this.setState({
-  //     user: {
-  //       [field]: e.currentTarget.value
-  //     }
-  //   });
-  // }
-
   update(field) {
     return e => {
       const user = JSON.parse(JSON.stringify(this.state.user));
@@ -56,26 +47,6 @@ class UserEditForm extends React.Component {
       () => this.props.history.push(`/users/${this.props.currentUser.id}`)
     );
   }
-
-  // resetPassword() {
-  //   this.setState({password: "", new_password: ""});
-  // }
-
-  // openEdit() {
-  //   document.getElementById("editAll").style.display = "flex";
-  // }
-
-  // closeEdit() {
-  //   document.getElementById("editAll").style.display = "none";
-  // }
-
-  // openEditPw() {
-  //   document.getElementById("editPW").style.display = "flex";
-  // }
-
-  // closeEditPw() {
-  //   document.getElementById("editPW").style.display = "none";
-  // }
 
   renderErrors() {
     

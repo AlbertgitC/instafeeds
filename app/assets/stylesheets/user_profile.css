@@ -54,9 +54,7 @@
 
 .username {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
+  align-items: center; 
 }
 
 .username h2 {
@@ -64,7 +62,7 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.username button {
+#edit-button {
   background-color: transparent;
   border: 1px solid rgba(var(--d0b,219,219,219),1);
   border-radius: 4px;
@@ -91,9 +89,9 @@
   margin-bottom: 15px;
 }
 
-.user-details div:last-child > a {
+/* .user-details div:last-child > a {
   font-weight: bold;
-}
+} */
 
 #user-pic {
   height: 150px;
@@ -102,6 +100,7 @@
 
 #gear {
   cursor: pointer;
+  margin-left: 12px;
 }
 
 .user-details div:nth-child(2) span{

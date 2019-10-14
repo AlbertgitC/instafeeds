@@ -1,0 +1,56 @@
+
+.following > button {
+  color: #262626;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 24px;
+  margin-left: 58px;
+  height: 29px;
+  background: transparent; 
+}
+
+.follow button {
+  background: #3897F0;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: bold; 
+  border-radius: 4px;
+  border: 1px solid transparent;
+  height: 30px;
+  padding: 5px 9px;
+  margin-left: 58px;
+}
+
+.following-form div:first-of-type{
+  height: 100px;
+}
+
+.following-form ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.following-form button {
+  border: none;
+  border-bottom: 1px lightgrey solid;
+  height: 48px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #ED4956;
+}
+
+.following-form li {
+  border-bottom: 1px lightgrey solid;
+  height: 48px;
+  line-height: 46px;
+}
+
+.following-form li:hover {
+  cursor: pointer;
+}
+
+.following-form li:last-child {
+  border: none;
+}

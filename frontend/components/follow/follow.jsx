@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Follow extends React.Component {
 
@@ -6,8 +7,10 @@ class Follow extends React.Component {
     super(props)
     this.state = { followed_id: "", follower_id: ""}
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFollow = this.handleFollow.bind(this);
+    this.handleUnfollow = this.handleUnfollow.bind(this);
     this.update = this.update.bind(this);
+    this.closeUnfollow = this.closeUnfollow.bind(this);
   }
 
   componentDidMount() {
@@ -15,30 +18,71 @@ class Follow extends React.Component {
   }
 
   update() {
-    this.setState({
-      followed_id: this.props.user.id,
-      follower_id: this.props.currentUser.id
-    });  
+    return e => {
+      this.setState({
+        followed_id: this.props.user.id,
+        follower_id: this.props.currentUser.id
+      });
+    } 
   }
 
-  handleSubmit(e) {
+  handleFollow(e) {
     e.preventDefault();
     const follow = Object.assign({}, this.state);
-
     this.props.followUser(follow);
   }
 
-
-  render() {
-    return(
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <button onClick={this.update}>Follow</button>
-        </form>
-      </div>
+  handleUnfollow(e) {
+    e.preventDefault();
+    const follow = Object.assign({}, this.state);
+    this.props.unfollowUser(follow).then(
+      () => this.closeUnfollow()
     );
   }
 
+  openUnfollow() {
+    document.getElementById("unfollow-overlay").style.display = "block";
+  }
+
+  closeUnfollow() {
+    document.getElementById("unfollow-overlay").style.display = "none";
+  }
+
+  render() {
+    if (!this.props.currentUser) {      
+      return(
+        <div className="follow">
+            <Link to="/login"><button>Follow</button></Link>            
+        </div>        
+      );
+    } else if (this.props.currentUser.followedUserIds.includes(this.props.user.id)) {
+      return (
+        <div className="following">
+          <button onClick={this.openUnfollow}>Following</button>
+          <div id="unfollow-overlay" className="overlay">
+            <div className="overlay-content">
+              <form className="following-form" onSubmit={this.handleUnfollow}>                
+                <div>{`${this.props.user.username}'s pic here`}</div>
+                <ul>
+                  <li>{`Unfollow ${this.props.user.username}?`}</li>
+                  <button onClick={this.update()}>Unfollow</button>                
+                  <li onClick={this.closeUnfollow}>Cancel</li> 
+                </ul>                                 
+              </form>              
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className="follow">
+          <form onSubmit={this.handleFollow}>
+            <button onClick={this.update()}>Follow</button>
+          </form>
+        </div>
+      );
+    }
+  }
 }
 
 export default Follow;
