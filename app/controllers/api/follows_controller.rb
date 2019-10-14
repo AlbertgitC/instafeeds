@@ -24,7 +24,9 @@ class Api::FollowsController < ApplicationController
   end
 
   def followers
-
+    followers = Follow.where("followed_id = #{params[:user_id]}")
+    @followers = [params[:user_id], followers]
+    render "api/follows/show_followers"
   end
 
   def following

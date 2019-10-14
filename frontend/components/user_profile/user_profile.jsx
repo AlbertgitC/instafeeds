@@ -18,12 +18,14 @@ class UserProfile extends React.Component {
   componentDidMount() {
     this.props.fetchUser(this.props.match.params.userId);
     this.props.fetchFollowing(this.props.match.params.userId);
+    this.props.fetchFollowers(this.props.match.params.userId);
   }
 
   componentDidUpdate() {
     if (!this.props.user) {
       this.props.fetchUser(this.props.match.params.userId);
       this.props.fetchFollowing(this.props.match.params.userId);
+      this.props.fetchFollowers(this.props.match.params.userId);
     }
   }
 
@@ -42,6 +44,14 @@ class UserProfile extends React.Component {
       return 0;
     else {
       return this.props.user.followedUserIds.length;
+    }
+  }
+
+  followersNum() {
+    if (!this.props.user.followerIds)
+      return 0;
+    else {
+      return this.props.user.followerIds.length;
     }
   }
 
@@ -79,7 +89,7 @@ class UserProfile extends React.Component {
               </div>              
               <div>
                 <span><b>15</b> posts</span>
-                <span><b>53</b> followers</span>                
+                <span><b>{this.followersNum()}</b> followers</span>                
                 <span><b>{this.props.currentUser.followedUserIds.length}</b> following</span>
               </div>
               <div>
@@ -106,7 +116,7 @@ class UserProfile extends React.Component {
               </div>
               <div>
                 <span><b>15</b> posts</span>
-                <span><b>53</b> followers</span>
+                <span><b>{this.followersNum()}</b> followers</span>
                 <span><b>{this.followingNum()}</b> following</span>
               </div>
               <div>

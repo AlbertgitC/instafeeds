@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import UserProfile from './user_profile';
 import { logout } from '../../actions/session_actions';
 import { fetchUser } from '../../actions/users_actions';
-import { fetchFollowing } from '../../actions/follows_actions';
+import { fetchFollowing, fetchFollowers } from '../../actions/follows_actions';
 import { RECEIVE_SESSION_ERRORS } from '../../actions/session_actions';
 
 const emptyErrors = () => {
@@ -24,7 +24,8 @@ const mapDipatchToProps = dispatch => {
   return {
     logout: () => dispatch(logout()),
     fetchUser: id => dispatch(fetchUser(id)),
-    fetchFollowing: id =>dispatch(fetchFollowing(id)),
+    fetchFollowing: id => dispatch(fetchFollowing(id)),
+    fetchFollowers: id => dispatch(fetchFollowers(id)),
     clearErrors: () => dispatch(emptyErrors())
   };
 };

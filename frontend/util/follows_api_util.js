@@ -20,3 +20,10 @@ export const fetchFollowing = (id) => {
     url: `api/users/${id}/following`,
   });
 }
+
+export const fetchFollowers = (id) => {
+  return $.ajax({
+    method: "get",
+    url: `api/users/${id}/followers`,
+  });
+}
