@@ -3,7 +3,8 @@ class Api::FollowsController < ApplicationController
   def create
     follow = Follow.new(follow_params)
     if follow.save
-      @following = current_user.following
+      following = current_user.following
+      @following = [current_user.id, following]
       render "api/follows/show_following"
     else
       render json: @follow.errors.full_messages, status: 422
@@ -14,7 +15,8 @@ class Api::FollowsController < ApplicationController
     follow = Follow.where("followed_id = #{follow_params[:followed_id]} AND follower_id = #{follow_params[:follower_id]}")[0]
     if follow
       Follow.destroy(follow[:id])
-      @following = current_user.following
+      following = current_user.following
+      @following = [current_user.id, following]
       render "api/follows/show_following"
     else
       render json: ["User not found"], status: 404

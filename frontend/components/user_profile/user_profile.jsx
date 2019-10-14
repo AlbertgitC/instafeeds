@@ -102,7 +102,7 @@ class UserProfile extends React.Component {
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.user.username}</h2>
-                <FollowContainer user={this.props.user} currentUser={this.props.currentUser} history={this.props.history}/>
+                <FollowContainer user={this.props.user} currentUser={this.props.currentUser} />
               </div>
               <div>
                 <span><b>15</b> posts</span>

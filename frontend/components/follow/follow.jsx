@@ -36,7 +36,13 @@ class Follow extends React.Component {
     e.preventDefault();
     const follow = Object.assign({}, this.state);
     this.props.unfollowUser(follow).then(
-      () => this.closeUnfollow()
+      () => {
+        this.closeUnfollow();
+        this.setState({
+          followed_id: "",
+          follower_id: ""
+        });
+      }
     );
   }
 
