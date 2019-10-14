@@ -1,14 +1,16 @@
 import { connect } from 'react-redux';
 import SideBar from './side_bar';
-// import { logout } from '../../actions/session_actions';
+import { fetchUser } from '../../actions/users_actions';
+
 
 const mapStateToProps = ({ entities, session }) => ({
-  currentUser: entities.users[session.currentUserId]
+  currentUser: entities.users[session.currentUserId],
+  users: entities.users
 });
 
-// const mapDipatchToProps = (dispatch) => ({
-//   logout: () => dispatch(logout())
-// });
+const mapDipatchToProps = (dispatch) => ({
+  fetchUser: id => dispatch(fetchUser(id))
+});
 
 
-export default connect(mapStateToProps)(SideBar)
+export default connect(mapStateToProps, mapDipatchToProps)(SideBar)
