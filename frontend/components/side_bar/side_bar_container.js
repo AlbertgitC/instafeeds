@@ -5,7 +5,8 @@ import { fetchUser } from '../../actions/users_actions';
 
 const mapStateToProps = ({ entities, session }) => ({
   currentUser: entities.users[session.currentUserId],
-  users: entities.users
+  users: entities.users,
+  currentUserFollowing: entities.users[session.currentUserId].followedUserIds
 });
 
 const mapDipatchToProps = (dispatch) => ({

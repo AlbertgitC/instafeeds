@@ -24,9 +24,15 @@ class Api::FollowsController < ApplicationController
   end
 
   def followers
-    followers = Follow.where("followed_id = #{params[:user_id]}")
-    @followers = [params[:user_id], followers]
-    render "api/follows/show_followers"
+    if params[:user_id] == "undefined"
+      followers = Follow.where("followed_id = #{current_user.id}")
+      @followers = [current_user.id, followers]
+      render "api/follows/show_followers"
+    else
+      followers = Follow.where("followed_id = #{params[:user_id]}")
+      @followers = [params[:user_id], followers]
+      render "api/follows/show_followers"
+    end
   end
 
   def following

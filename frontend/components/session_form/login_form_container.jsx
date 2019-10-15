@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { login, RECEIVE_SESSION_ERRORS } from '../../actions/session_actions';
 import SessionForm from './session_form';
-import { fetchFollowing } from '../../actions/follows_actions';
+import { fetchFollowing, fetchFollowers } from '../../actions/follows_actions';
 
 const mapStateToProps = ({ errors }) => {
   return {
@@ -21,7 +21,8 @@ const mapDispatchToProps = dispatch => {
   return {
     processForm: (user) => dispatch(login(user)),
     clearErrors: () => dispatch(emptyErrors()),
-    fetchFollowing: (id) => dispatch(fetchFollowing(id))
+    fetchFollowing: (id) => dispatch(fetchFollowing(id)),
+    fetchFollowers: (id) => dispatch(fetchFollowers(id))
   };
 };
 

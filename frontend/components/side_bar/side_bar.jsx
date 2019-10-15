@@ -8,21 +8,46 @@ class SideBar extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {users: []};
   }
 
   componentDidMount() {
-    this.props.currentUser.followedUserIds.map(
-      id => { this.props.fetchUser(id); }
-    );
+    if (this.props.currentUser.followedUserIds) {
+      this.props.currentUser.followedUserIds.map(
+        id => {
+          this.props.fetchUser(id).then(
+            action => {
+              let prevState = Object.assign({}, this.state)
+              prevState.users.push(action.user)
+              this.setState(prevState);
+            }
+          );
+        }
+      );
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.currentUserFollowing && this.props.currentUserFollowing) {
+      this.props.currentUser.followedUserIds.map(
+        id => { this.props.fetchUser(id).then(
+          action => {
+            let prevState = Object.assign({}, this.state)
+            prevState.users.push(action.user)
+            this.setState(prevState);            
+          }
+        ); }
+      );
+    }
   }
 
   render() {
-
-    const followingUsers = this.props.currentUser.followedUserIds.map(
-      id => {
-        if (!this.props.users[id]) { return null; }
+    
+    const followingUsers = this.state.users.map(
+      user => {
+        if (!this.props.users) { return null; }
         else {
-          return <FollowedUser key={id} user={this.props.users[id]} />
+          return <FollowedUser key={user.id} user={user} />
         }        
       }
     );
