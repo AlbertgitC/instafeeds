@@ -2,6 +2,7 @@ import * as API from '../util/users_api_util';
 import { RECEIVE_CURRENT_USER, RECEIVE_SESSION_ERRORS } from './session_actions';
 
 export const RECEIVE_FETCHED_USER = "RECEIVE_FETCHED_USER";
+export const RECEIVE_FETCHED_USERS = "RECEIVE_FETCHED_USERS";
 
 const receiveCurrentUser = user => {
   return {
@@ -14,6 +15,13 @@ const receiveFetchedUser = user => {
   return {
     type: RECEIVE_FETCHED_USER,
     user
+  };
+}
+
+const receiveFetchedUsers = users => {
+  return {
+    type: RECEIVE_FETCHED_USERS,
+    users
   };
 }
 
@@ -34,6 +42,13 @@ export const editUser = user => dispatch => {
 export const fetchUser = id => dispatch => {
   return API.fetchUser(id).then(
     user => dispatch(receiveFetchedUser(user)),
+    errors => dispatch(receiveErrors(errors.responseJSON))
+  );
+}
+
+export const fetchUsers = ids => dispatch => {
+  return API.fetchUsers(ids).then(
+    users => dispatch(receiveFetchedUsers(users)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 }

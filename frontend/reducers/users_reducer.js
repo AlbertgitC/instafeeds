@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_FETCHED_USER } from '../actions/users_actions';
+import { RECEIVE_FETCHED_USER, RECEIVE_FETCHED_USERS } from '../actions/users_actions';
 import { RECEIVE_FOLLOWING, RECEIVE_UNFOLLOW, RECEIVE_FOLLOWERS } from '../actions/follows_actions';
 import { merge } from 'lodash';
 
@@ -18,6 +18,8 @@ export default (state = {}, action) => {
       return newState;
     case RECEIVE_FOLLOWERS:
       return merge({}, state, { [action.followers.followed_id]: { followerIds: action.followers.followersArr } });
+    case RECEIVE_FETCHED_USERS:
+      return merge({}, state, action.users)
     default:
       return state;
   }

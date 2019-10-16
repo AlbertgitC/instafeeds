@@ -12,34 +12,17 @@ class SideBar extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.currentUser.followedUserIds) {
-      this.props.currentUser.followedUserIds.map(
-        id => {
-          this.props.fetchUser(id).then(
-            action => {
-              let prevState = Object.assign({}, this.state)
-              prevState.users.push(action.user)
-              this.setState(prevState);
-            }
-          );
-        }
-      );
+    if (this.props.users) {
+      this.setState({ users: Object.values(this.props.users) });
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.currentUserFollowing && this.props.currentUserFollowing) {
-      this.props.currentUser.followedUserIds.map(
-        id => { this.props.fetchUser(id).then(
-          action => {
-            let prevState = Object.assign({}, this.state)
-            prevState.users.push(action.user)
-            this.setState(prevState);            
-          }
-        ); }
-      );
+    if (prevProps.users !== this.props.users) {
+      this.setState({users: Object.values(this.props.users)});
     }
   }
+
 
   render() {
     

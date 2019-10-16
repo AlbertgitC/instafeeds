@@ -1,0 +1,10 @@
+.feeds-main {
+  width: 66%;
+  border: 2px solid black;
+  height: 800px;
+  margin: 130px 30px 0 30px;
+}
+
+.feeds-main p {
+  color: red;
+}

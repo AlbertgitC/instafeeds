@@ -20,6 +20,17 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def index
+    
+    @users = User.where(id: params[:filter])
+
+    if @users
+      render "api/users/index"
+    else
+      render json: ["Users not found"], status: 404
+    end
+  end
+
   def update
     
     if user_password_params[:formType] == "editPassword"
@@ -67,5 +78,8 @@ class Api::UsersController < ApplicationController
   end
   def create_user_params
     params.require(:user).permit(:username, :password, :email)
+  end
+  def fetch_users_params
+    params.require(:filter).permit(:ids)
   end
 end

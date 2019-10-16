@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FollowContainer from '../follow/follow_container';
+import { withRouter } from "react-router";
 
 
 
@@ -65,11 +66,12 @@ class UserProfile extends React.Component {
 
 
   render() {
+    const NavBarContainerWithRouter = withRouter(NavBarContainer);
     if (!this.props.user || !this.props.user.username) return null;
     if (this.props.currentUser && this.props.currentUser.id === this.props.user.id) {
       return (
         <div className="user-profile-page">
-          <NavBarContainer />
+          <NavBarContainerWithRouter />
           <div className="user-profile">
             <FontAwesomeIcon id="user-pic" icon={['far', 'user']} size="7x" />
             <div className="user-details">
@@ -106,7 +108,7 @@ class UserProfile extends React.Component {
     } else {
       return (
         <div className="user-profile-page">
-          <NavBarContainer />
+          <NavBarContainerWithRouter />
           <div className="user-profile">
             <FontAwesomeIcon id="user-pic" icon={['far', 'user']} size="7x" />
             <div className="user-details">

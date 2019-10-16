@@ -5,7 +5,7 @@ import Root from "./components/root";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { faCompass, faHeart, faUser} from '@fortawesome/free-regular-svg-icons';
+import { faCompass, faHeart, faUser, faPlusSquare } from '@fortawesome/free-regular-svg-icons';
 import { merge } from 'lodash';
 
 // import { login, signup, logout } from './actions/session_actions';
@@ -16,7 +16,7 @@ import { merge } from 'lodash';
 // window.logout = logout;
 
 document.addEventListener("DOMContentLoaded", () => {
-  library.add(fab, faCompass, faHeart, faUser, faCog)
+  library.add(fab, faCompass, faHeart, faUser, faCog, faPlusSquare)
 
   let store;
   if (window.currentUser) {
