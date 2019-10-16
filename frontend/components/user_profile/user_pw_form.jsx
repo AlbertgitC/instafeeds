@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import { withRouter } from "react-router";
 
 
 class UserEditPasswordForm extends React.Component {
@@ -60,9 +61,11 @@ class UserEditPasswordForm extends React.Component {
 
 
   render() {
+    const NavBarContainerWithRouter = withRouter(NavBarContainer);
+    
     return (
       <div>
-        <NavBarContainer />
+        <NavBarContainerWithRouter />
         <div className="edit-form">
 
           <div className="edit-profile-side">

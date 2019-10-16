@@ -109,8 +109,31 @@
 
 .user-main-content {
   display: flex;
+  flex-wrap: wrap;
   width: 950px;
-  align-items: center;
-  justify-content: center;
   margin: 60px auto;
+}
+
+.user-feed {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  overflow: hidden;
+  margin: 12px;
+}
+
+.user-feed img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+.user-feed img.portrait {
+  width: 100%;
+  height: auto;
 }

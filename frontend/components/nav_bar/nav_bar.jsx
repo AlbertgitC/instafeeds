@@ -83,7 +83,7 @@ class NavBar extends React.Component {
             </div>
           </div>
           <div id="feedForm" className="overlay">
-            <div className="overlay-content">
+            <div className="feedForm-overlay-content">
               <FeedFormContainer rerenderFeeds={this.rerenderFeeds}/>
               <button onClick={this.closeForm}>Cancel</button>
             </div>

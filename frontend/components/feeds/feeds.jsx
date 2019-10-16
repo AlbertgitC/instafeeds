@@ -16,11 +16,11 @@ class Feeds extends React.Component {
 
   componentDidMount() {
     if (this.props.user_ids) {
-      this.props.fetchUsers(this.props.user_ids);
+      this.props.fetchUsers({ ids: this.props.user_ids });
       // let feedIds = this.props.user_ids
       // .push(this.props.currentUser.id);
       // this.props.fetchFeeds(feedIds).then(
-      this.props.fetchFeeds(this.props.user_ids.concat(this.props.currentUser.id)).then(
+      this.props.fetchFeeds({ids: this.props.user_ids.concat(this.props.currentUser.id)}).then(
         (action) => { this.setState({ feeds: action.feeds }); }
       );
     }
@@ -30,11 +30,11 @@ class Feeds extends React.Component {
   componentDidUpdate(oldProps) {
     if (!isEqual(oldProps.user_ids, this.props.user_ids)) {
       
-      this.props.fetchUsers(this.props.user_ids);
+      this.props.fetchUsers({ids: this.props.user_ids});
       // let feedIds = []
       // feedIds.this.props.user_ids
       // .push(this.props.currentUser.id);
-      this.props.fetchFeeds(this.props.user_ids.concat(this.props.currentUser.id)).then(
+      this.props.fetchFeeds({ids: this.props.user_ids.concat(this.props.currentUser.id)}).then(
         (action) => { this.setState({ feeds: action.feeds }); }
       );
     }
@@ -45,7 +45,7 @@ class Feeds extends React.Component {
   }
 
   rerenderFeeds() {
-    this.props.fetchFeeds(this.props.user_ids.concat(this.props.currentUser.id)).then(
+    this.props.fetchFeeds({ids: this.props.user_ids.concat(this.props.currentUser.id)}).then(
       (action) => { this.setState({ feeds: action.feeds }); }
     );
   }
@@ -53,18 +53,18 @@ class Feeds extends React.Component {
   feedLis() {
     if (isEqual(this.state.feeds, {})) {return null;}
     else {
-      let feedItems = Object.values(this.state.feeds);
+      let feedItems = Object.values(this.state.feeds).reverse();
       
       let postlis = feedItems.map(
         feed => {
           return (
-            <li key={feed.id}>
+            <li key={feed.id} className="feed">
               <div>
                 <label>author's pic</label>
                 <span>{this.props.users[feed.user_id].username}</span> 
               </div>
-              <div>picture here</div>
-              <p>{feed.body}</p>
+              <img src={feed.photoUrl}/>
+              <p><b>{this.props.users[feed.user_id].username}</b> {feed.body}</p>
             </li>
           );
         }
@@ -82,7 +82,7 @@ class Feeds extends React.Component {
           {this.feedLis()}
         </ul>
         <div id="feedForm" className="overlay">
-          <div className="overlay-content">
+          <div className="feedForm-overlay-content">
             <FeedFormContainer rerenderFeeds={this.rerenderFeeds}/>
             <button onClick={this.closeForm}>Cancel</button>
           </div>

@@ -11,7 +11,7 @@ class UserProfile extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state;
+    this.state = {userFeeds: {}};
     this.userProfile = {};
     this.logout = this.logout.bind(this);
   }
@@ -20,6 +20,9 @@ class UserProfile extends React.Component {
     this.props.fetchUser(this.props.match.params.userId);
     this.props.fetchFollowing(this.props.match.params.userId);
     this.props.fetchFollowers(this.props.match.params.userId);
+    this.props.fetchFeeds({ ids: [this.props.match.params.userId] }).then(
+      (action) => { this.setState({ userFeeds: action.feeds }); }
+    );
   }
 
   componentDidUpdate() {
@@ -27,6 +30,9 @@ class UserProfile extends React.Component {
       this.props.fetchUser(this.props.match.params.userId);
       this.props.fetchFollowing(this.props.match.params.userId);
       this.props.fetchFollowers(this.props.match.params.userId);
+      this.props.fetchFeeds({ ids: [this.props.match.params.userId] }).then(
+        (action) => { this.setState({ userFeeds: action.feeds }); }
+      );
     }
   }
 
@@ -36,7 +42,11 @@ class UserProfile extends React.Component {
 
   logout() {
     this.props.logout().then(
-      () => this.props.history.push('/login')
+      () => {
+        this.props.history.push('/login');
+        this.props.entities.users = {};
+        this.props.entities.feeds = {};
+      }
     );
   }
 
@@ -64,8 +74,25 @@ class UserProfile extends React.Component {
     document.getElementById("editNav").style.display = "none";
   }
 
+  userFeedLis() {
+    let feedItems = Object.values(this.state.userFeeds).reverse();
+
+    let postlis = feedItems.map(
+      feed => {
+        return (
+          <div key={feed.id} className="user-feed">
+            <img src={feed.photoUrl} />
+          </div>
+        );
+      }
+    );
+
+    return postlis;
+  }
+
 
   render() {
+    
     const NavBarContainerWithRouter = withRouter(NavBarContainer);
     if (!this.props.user || !this.props.user.username) return null;
     if (this.props.currentUser && this.props.currentUser.id === this.props.user.id) {
@@ -101,7 +128,7 @@ class UserProfile extends React.Component {
             </div>            
           </div>
           <div className="user-main-content">
-            <p>User_main_content</p>
+            {this.userFeedLis()}
           </div>          
         </div>
       );
@@ -128,7 +155,7 @@ class UserProfile extends React.Component {
             </div>
           </div>
           <div className="user-main-content">
-            <p>User_main_content</p>
+            {this.userFeedLis()}
           </div>
         </div>
       );

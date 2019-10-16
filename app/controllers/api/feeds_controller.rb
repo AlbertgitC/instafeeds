@@ -1,9 +1,13 @@
 class Api::FeedsController < ApplicationController
 
   def create
-    feed = Feed.new(feed_params)
+    new_feed_params = feed_params.except(:user_ids)
+    
+    feed = current_user.feeds.new(new_feed_params)
+    
     if feed.save
-      @feeds = Feed.where(:user_id => feed_params[:user_ids])
+      @feeds = Feed.where(:user_id => feed_params[:user_ids]).order("id DESC")
+      
       render "api/feeds/index"
     else
       render json: feed.errors.full_messages, status: 422
@@ -13,7 +17,7 @@ class Api::FeedsController < ApplicationController
 
   def index
     
-    @feeds = Feed.where(:user_id => params[:user_ids])
+    @feeds = Feed.where(:user_id => index_params[:ids]).order("id DESC")
 
     if !@feeds.empty?
       render "api/feeds/index"
@@ -54,12 +58,12 @@ class Api::FeedsController < ApplicationController
 
 
   private
-  def feeds_params
-    params.require(:feeds).permit(:user_ids)
+  def index_params
+    params.require(:user_ids).permit(ids:[])
   end
 
   def feed_params
-    params.require(:feed).permit(:user_id, :body, :user_ids)
+    params.require(:feed).permit(:body, :photo, user_ids:[])
   end
 
 end

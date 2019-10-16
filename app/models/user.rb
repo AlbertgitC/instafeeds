@@ -22,7 +22,7 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_many :authored_feeds,
+  has_many :feeds,
     class_name: "Feed",
     foreign_key: :user_id
 

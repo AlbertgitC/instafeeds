@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
+import { withRouter } from "react-router";
 
 class UserEditForm extends React.Component {
   constructor(props) {
@@ -63,10 +64,11 @@ class UserEditForm extends React.Component {
 
   
   render() {
+    const NavBarContainerWithRouter = withRouter(NavBarContainer);
     
     return (
       <div>
-        <NavBarContainer />
+        <NavBarContainerWithRouter />
         <div className="edit-form">
         
           <div className="edit-profile-side">

@@ -2,7 +2,9 @@ export const createFeed = (feed) => {
   return $.ajax({
     method: "post",
     url: "api/feeds",
-    data: { feed }
+    data: feed,
+    contentType: false,
+    processData: false 
   });
 }
 

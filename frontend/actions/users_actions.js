@@ -46,8 +46,8 @@ export const fetchUser = id => dispatch => {
   );
 }
 
-export const fetchUsers = ids => dispatch => {
-  return API.fetchUsers(ids).then(
+export const fetchUsers = filter => dispatch => {
+  return API.fetchUsers(filter).then(
     users => dispatch(receiveFetchedUsers(users)),
     errors => dispatch(receiveErrors(errors.responseJSON))
   );

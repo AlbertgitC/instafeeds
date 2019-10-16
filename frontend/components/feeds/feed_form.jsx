@@ -4,12 +4,14 @@ class FeedForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user_id: this.props.currentUser.id,
+      // user_id: this.props.currentUser.id,
+      photoFile: null,
       body: "",
       user_ids: []
     };
     
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this);
   }
 
   componentDidMount() {
@@ -24,10 +26,23 @@ class FeedForm extends React.Component {
     });
   }
 
+  handleFile(e) {
+    this.setState({photoFile: e.currentTarget.files[0]})
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const feed = Object.assign({}, this.state);
-    this.props.createFeed(feed).then(
+    const feedData = new FormData();
+    
+    feedData.append("feed[photo]", this.state.photoFile);
+    feedData.append("feed[body]", this.state.body);
+    // feedData.append("feed[user_ids]", this.state.user_ids);
+
+    for (let i = 0; i < this.state.user_ids.length; i++) {
+      feedData.append("feed[user_ids][]", this.state.user_ids[i]);
+    }
+
+    this.props.createFeed(feedData).then(
       () => { 
         this.closeForm();
         this.props.rerenderFeeds();
@@ -56,12 +71,15 @@ class FeedForm extends React.Component {
   render() {
     return (
       <div className="feed-form">
-        <form onSubmit={this.handleSubmit}>
-          <h1>Instafeeds</h1>
-          <br />
-          {this.renderErrors()}
-          <div className="input-field">
-            <span>upload file placeholder</span>
+        <form onSubmit={this.handleSubmit}>          
+          <div className="feedForm-input-field">
+            <div>Post a Feed!</div>
+            {this.renderErrors()}
+            <input type="file"
+              onChange={this.handleFile}
+              id="file"
+            />
+            <label htmlFor="file">Choose a file</label>
             <input type="text"
               onChange={this.update("body")}
               placeholder="Write a caption..."

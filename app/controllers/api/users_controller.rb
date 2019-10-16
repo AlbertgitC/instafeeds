@@ -22,8 +22,8 @@ class Api::UsersController < ApplicationController
 
   def index
     
-    @users = User.where(id: params[:filter])
-
+    @users = User.where(id: fetch_users_params[:ids])
+    
     if @users
       render "api/users/index"
     else
@@ -80,6 +80,6 @@ class Api::UsersController < ApplicationController
     params.require(:user).permit(:username, :password, :email)
   end
   def fetch_users_params
-    params.require(:filter).permit(:ids)
+    params.require(:filter).permit(ids:[])
   end
 end
