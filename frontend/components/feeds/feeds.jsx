@@ -54,10 +54,14 @@ class Feeds extends React.Component {
           return (
             <li key={feed.id} className="feed">
               <div>
-                <label>author's pic</label>
-                <span>{this.props.users[feed.user_id].username}</span> 
+                <Link to={`/users/${feed.user_id}`}>
+                  <label>author's pic</label>
+                  <span>{this.props.users[feed.user_id].username}</span>
+                </Link>                 
               </div>
-              <img src={feed.photoUrl}/>
+              <Link to={`/feeds/${feed.id}`}>
+                <img src={feed.photoUrl}/>
+              </Link>              
               <p><b>{this.props.users[feed.user_id].username}</b> {feed.body}</p>
             </li>
           );

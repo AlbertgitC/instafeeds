@@ -82,7 +82,9 @@ class UserProfile extends React.Component {
       feed => {
         return (
           <div key={feed.id} className="user-feed">
-            <img src={feed.photoUrl} />
+            <Link to={`/feeds/${feed.id}`}>
+              <img src={feed.photoUrl} />
+            </Link>            
           </div>
         );
       }
