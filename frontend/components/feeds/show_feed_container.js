@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import ShowFeed from './show_feed'
 import { fetchFeed } from '../../actions/feeds_actions';
 import { fetchUser } from '../../actions/users_actions';
+import { fetchFeedLikers } from '../../actions/likes_actions';
 
 const mapStateToProps = ({ entities, session }, ownProps) => {
   
@@ -14,7 +15,8 @@ const mapStateToProps = ({ entities, session }, ownProps) => {
 
 const mapDipatchToProps = (dispatch) => ({
   fetchFeed: (id) => dispatch(fetchFeed(id)),
-  fetchUser: (id) => dispatch(fetchUser(id))
+  fetchUser: (id) => dispatch(fetchUser(id)),
+  fetchFeedLikers: (feed_id) => dispatch(fetchFeedLikers(feed_id))
 });
 
 

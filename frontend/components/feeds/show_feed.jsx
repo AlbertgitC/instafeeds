@@ -3,7 +3,7 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import { withRouter } from "react-router";
 import FollowContainer from '../follow/follow_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
+import LikeContainer from '../like/like_container';
 
 class ShowFeed extends React.Component {
 
@@ -20,6 +20,7 @@ class ShowFeed extends React.Component {
     this.props.fetchFeed(this.props.match.params.feedId).then(
       response => {
         this.setState({ feed: response.feed });
+        this.props.fetchFeedLikers(response.feed.id);
         this.props.fetchUser(response.feed.user_id).then(
           response => { this.setState({ author: response.user }); }
         );
@@ -32,6 +33,7 @@ class ShowFeed extends React.Component {
       this.props.fetchFeed(this.props.match.params.feedId).then(
         response => {
           this.setState({ feed: response.feed });
+          this.props.fetchFeedLikers(response.feed.id);
           this.props.fetchUser(response.feed.user_id).then(
             response => { this.setState({ author: response.user }); }
           );
@@ -65,7 +67,12 @@ class ShowFeed extends React.Component {
               </div>
             </div>
             <div>{this.state.feed.body}</div>
-            <div>likes</div>
+            <div>
+              <div># likes</div>
+              <div>
+                <LikeContainer feed_id={this.state.feed.id} />
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -79,6 +79,8 @@ class Follow extends React.Component {
           </div>
         </div>
       );
+    } else if (this.props.currentUser.id === this.props.user.id) {
+      return null;
     } else {
       return (
         <div className="follow">
