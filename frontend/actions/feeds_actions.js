@@ -37,3 +37,9 @@ export const fetchFeeds = ids => dispatch => {
     feeds => dispatch(receiveFeeds(feeds))
   );
 }
+
+export const fetchFeed = id => dispatch => {
+  return API.fetchFeed(id).then(
+    feed => dispatch(receiveFeed(feed))
+  );
+}

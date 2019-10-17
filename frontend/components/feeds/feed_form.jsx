@@ -4,7 +4,6 @@ class FeedForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // user_id: this.props.currentUser.id,
       photoFile: null,
       body: "",
       user_ids: []
@@ -36,7 +35,6 @@ class FeedForm extends React.Component {
     
     feedData.append("feed[photo]", this.state.photoFile);
     feedData.append("feed[body]", this.state.body);
-    // feedData.append("feed[user_ids]", this.state.user_ids);
 
     for (let i = 0; i < this.state.user_ids.length; i++) {
       feedData.append("feed[user_ids][]", this.state.user_ids[i]);

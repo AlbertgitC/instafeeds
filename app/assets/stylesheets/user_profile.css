@@ -15,7 +15,7 @@
   display: none;
   height: 100%;
   width: 100%;
-  position: fixed; 
+  position: fixed;
   z-index: 1; 
   left: 0;
   top: 0; 
@@ -60,6 +60,7 @@
 .username h2 {
   font-size: 28px;
   font-family: 'Open Sans', sans-serif;
+  margin-right: 58px;
 }
 
 #edit-button {
@@ -89,10 +90,6 @@
   margin-bottom: 15px;
 }
 
-/* .user-details div:last-child > a {
-  font-weight: bold;
-} */
-
 #user-pic {
   height: 150px;
   margin-right: 30px; 
@@ -115,6 +112,16 @@
 }
 
 .user-feed {
+  margin: 12px;
+}
+
+.user-feed img {
+  object-fit: cover;
+  width:280px;
+  height:280px;
+}
+
+/* .user-feed {
   position: relative;
   width: 280px;
   height: 280px;
@@ -136,4 +143,4 @@
 .user-feed img.portrait {
   width: 100%;
   height: auto;
-}
+} */

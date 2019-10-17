@@ -18,16 +18,14 @@ class Api::FeedsController < ApplicationController
   def index
     
     @feeds = Feed.where(:user_id => index_params[:ids]).order("id DESC")
-
-    if !@feeds.empty?
-      render "api/feeds/index"
-    else
-      render json: ["Feeds not found"], status: 404
-    end
+    
+    
+    render "api/feeds/index"
+    
   end
 
   def show
-    @feed = Feed.find(feed_params[:id])
+    @feed = Feed.find(params[:id])
     if @feed
       render "api/feeds/show"
     else
@@ -58,6 +56,7 @@ class Api::FeedsController < ApplicationController
 
 
   private
+
   def index_params
     params.require(:user_ids).permit(ids:[])
   end

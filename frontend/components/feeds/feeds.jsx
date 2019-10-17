@@ -17,9 +17,6 @@ class Feeds extends React.Component {
   componentDidMount() {
     if (this.props.user_ids) {
       this.props.fetchUsers({ ids: this.props.user_ids });
-      // let feedIds = this.props.user_ids
-      // .push(this.props.currentUser.id);
-      // this.props.fetchFeeds(feedIds).then(
       this.props.fetchFeeds({ids: this.props.user_ids.concat(this.props.currentUser.id)}).then(
         (action) => { this.setState({ feeds: action.feeds }); }
       );
@@ -31,9 +28,6 @@ class Feeds extends React.Component {
     if (!isEqual(oldProps.user_ids, this.props.user_ids)) {
       
       this.props.fetchUsers({ids: this.props.user_ids});
-      // let feedIds = []
-      // feedIds.this.props.user_ids
-      // .push(this.props.currentUser.id);
       this.props.fetchFeeds({ids: this.props.user_ids.concat(this.props.currentUser.id)}).then(
         (action) => { this.setState({ feeds: action.feeds }); }
       );

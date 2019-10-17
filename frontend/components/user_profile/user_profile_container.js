@@ -15,7 +15,7 @@ const emptyErrors = () => {
 const mapStateToProps = ({ entities, session, errors }, ownProps) => {
   
   return {
-    user: entities.users[ownProps.match.params.userId],
+    user: entities.users[ownProps.match.params.userId] || {},
     currentUser: entities.users[session.currentUserId],
     errors: errors.auth,
     entities: entities

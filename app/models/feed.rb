@@ -20,7 +20,8 @@ class Feed < ApplicationRecord
     class_name: "Comment",
     foreign_key: :feed_id
 
-  has_many :likes, :as => :likeable
+  has_many :likes, 
+    as: :likeable
 
   has_one_attached :photo
 

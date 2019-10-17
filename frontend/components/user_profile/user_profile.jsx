@@ -25,15 +25,16 @@ class UserProfile extends React.Component {
     );
   }
 
-  componentDidUpdate() {
-    if (!this.props.user) {
+  componentDidUpdate(oldProps) {
+    
+    if (!this.props.user.username || oldProps.user.id !== this.props.user.id) {
       this.props.fetchUser(this.props.match.params.userId);
       this.props.fetchFollowing(this.props.match.params.userId);
       this.props.fetchFollowers(this.props.match.params.userId);
       this.props.fetchFeeds({ ids: [this.props.match.params.userId] }).then(
         (action) => { this.setState({ userFeeds: action.feeds }); }
       );
-    }
+    } 
   }
 
   componentWillUnmount() {
@@ -94,7 +95,7 @@ class UserProfile extends React.Component {
   render() {
     
     const NavBarContainerWithRouter = withRouter(NavBarContainer);
-    if (!this.props.user || !this.props.user.username) return null;
+    if (!this.props.user.username) return null;
     if (this.props.currentUser && this.props.currentUser.id === this.props.user.id) {
       return (
         <div className="user-profile-page">
