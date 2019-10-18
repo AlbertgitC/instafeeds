@@ -203,3 +203,33 @@
   margin-left: 20px;
 }
 
+
+/* block out demo account */
+#block-edit {
+  display: block;
+}
+
+.block-edit-content {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  width: 400px;
+  position: relative;
+  top: 25%; 
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 0 solid #000;
+  height: 100px;
+}
+
+.block-edit-content > div {
+  margin-top: 16px;
+}
+
+.block-edit-content a {
+  font-weight: bold;
+  width: 100px;
+  height: 18px;
+  margin: 0 auto;
+}

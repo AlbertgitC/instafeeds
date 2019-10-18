@@ -13,8 +13,11 @@ class ShowFeed extends React.Component {
     super(props)
     this.state = {
       feed: {},
-      author: {}
+      author: {},
+      likers: []
     };
+
+    this.renderLikes = this.renderLikes.bind(this);
   }
 
   componentDidMount() {
@@ -22,7 +25,9 @@ class ShowFeed extends React.Component {
     this.props.fetchFeed(this.props.match.params.feedId).then(
       response => {
         this.setState({ feed: response.feed });
-        this.props.fetchFeedLikers(response.feed.id);
+        this.props.fetchFeedLikers(response.feed.id).then(
+          response => { this.setState({likers: response.likers.likerIds});}
+        );
         this.props.fetchUser(response.feed.user_id).then(
           response => { this.setState({ author: response.user }); }
         );
@@ -44,14 +49,16 @@ class ShowFeed extends React.Component {
     }
   }
   
-  
+  renderLikes() {
+    this.setState({ likers: this.props.feed.likerIds });
+  }
 
   render() {
     const NavBarContainerWithRouter = withRouter(NavBarContainer);
     const author = this.state.author
     
     if (!this.state.feed.id) return null;
-
+    
     return (
       <div className="show-feed-main">
         <NavBarContainerWithRouter />
@@ -72,9 +79,9 @@ class ShowFeed extends React.Component {
             </div>
             <div>{this.state.feed.body}</div>
             <div>
-              <div># likes</div>
-              <div>
-                <LikeContainer feed_id={this.state.feed.id} />
+              <div>{this.state.likers.length} likes</div>
+              <div onClick={this.renderLikes}>
+                <LikeContainer feed_id={this.state.feed.id} renderLikes={this.renderLikes}/>
               </div>
             </div>
           </div>

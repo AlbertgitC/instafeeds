@@ -39,7 +39,7 @@ class FeedForm extends React.Component {
     for (let i = 0; i < this.state.user_ids.length; i++) {
       feedData.append("feed[user_ids][]", this.state.user_ids[i]);
     }
-
+    
     this.props.createFeed(feedData).then(
       () => { 
         this.closeForm();

@@ -1,8 +1,11 @@
 export const editUser = (user) => {
+  
   return $.ajax({
     method: "patch",
-    url: `api/users/${user.id}`,
-    data: { user }
+    url: `api/users/${user.get(user.id)}`,
+    data: user,
+    contentType: false,
+    processData: false
   });
 }
 

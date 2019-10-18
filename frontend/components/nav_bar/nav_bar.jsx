@@ -44,9 +44,9 @@ class NavBar extends React.Component {
               <Link to="/">
                 <FontAwesomeIcon icon={['far', 'compass']} size="lg" />
               </Link>
-              <Link to="/">
+              {/* <Link to="/">
                 <FontAwesomeIcon icon={['far', 'heart']} size="lg" />    
-              </Link>                
+              </Link>                 */}
               <Link to={`/users/${this.props.currentUser.id}`}>
                 <FontAwesomeIcon icon={['far', 'user']} size="lg" />
               </Link>
@@ -74,9 +74,9 @@ class NavBar extends React.Component {
               <Link to="/">
                 <FontAwesomeIcon icon={['far', 'compass']} size="lg" />
               </Link>
-              <Link to="/">
+              {/* <Link to="/">
                 <FontAwesomeIcon icon={['far', 'heart']} size="lg" />
-              </Link>
+              </Link> */}
               <Link to={`/users/${this.props.currentUser.id}`}>
                 <FontAwesomeIcon icon={['far', 'user']} size="lg" />
               </Link>

@@ -33,21 +33,21 @@ class Api::UsersController < ApplicationController
 
   def update
     
-    if user_password_params[:formType] == "editPassword"
+    if user_params[:formType] == "editPassword"
       
       @user = User.find_by_credentials(
-        user_password_params[:user][:username],
-        user_password_params[:user][:password]
+        user_params[:user][:username],
+        user_params[:user][:password]
       )
 
       if !@user
         return render json: ["Invalid credentials"], status: 401
-      elsif user_password_params[:user][:new_password] != user_password_params[:user][:new_password2]
+      elsif user_params[:user][:new_password] != user_params[:user][:new_password2]
         return render json: ["New password does not match confirm password"], status: 422
       end
 
       
-      @user.password = user_password_params[:user][:new_password]
+      @user.password = user_params[:user][:new_password]
       
       
 
@@ -59,7 +59,7 @@ class Api::UsersController < ApplicationController
     elsif user_params[:formType] == "editInfo"
       
       @user = current_user
-      new_user_params = user_params[:user]
+      new_user_params = user_params[:user].except(:password, :new_password, :new_password2)
       
       if @user.update(new_user_params)
         render "api/users/show"      
@@ -71,11 +71,11 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit({:user => [:username, :email, :website, :bio]}, :formType)
+    params.require(:user).permit({:user => [:username, :email, :website, :bio, :thumbnail, :password, :new_password, :new_password2]}, :formType)
   end
-  def user_password_params
-    params.require(:user).permit({:user => [:username, :password, :new_password, :new_password2]}, :formType)
-  end
+  # def user_password_params
+  #   params.require(:user).permit({:user => [:username, :password, :new_password, :new_password2]}, :formType)
+  # end
   def create_user_params
     params.require(:user).permit(:username, :password, :email)
   end

@@ -9,6 +9,7 @@ class UserEditPasswordForm extends React.Component {
     super(props);
     this.state = {
       user: {
+        id: this.props.currentUser.id,
         username: "",
         password: "",
         new_password: "",
@@ -23,6 +24,7 @@ class UserEditPasswordForm extends React.Component {
   componentDidMount() {
     this.setState({
       user: {
+        id: this.props.currentUser.id,
         username: this.props.currentUser.username
       }
     });
@@ -39,9 +41,16 @@ class UserEditPasswordForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+    // const user = Object.assign({}, this.state);
+    const userData = new FormData();
+    userData.append("user[formType]", "editPassword");
+    userData.append("user[user][id]", this.state.user.id);
+    userData.append("user[user][username]", this.state.user.username);
+    userData.append("user[user][password]", this.state.user.password);
+    userData.append("user[user][new_password]", this.state.user.new_password);
+    userData.append("user[user][new_password2]", this.state.user.new_password2);
 
-    this.props.editUser(user).then(
+    this.props.editUser(userData).then(
       () => this.props.history.push(`/users/${this.props.currentUser.id}`)
     );
   }

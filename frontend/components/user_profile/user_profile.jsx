@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FollowContainer from '../follow/follow_container';
 import { withRouter } from "react-router";
 import UserThumbContainer from '../user_thumbnail/user_thumbnail_container';
+import ThumbnailFormContainer from '../user_thumbnail/user_thumbnail_form_container';
 
 
 
@@ -76,6 +77,10 @@ class UserProfile extends React.Component {
     document.getElementById("editNav").style.display = "none";
   }
 
+  openThumbForm() {
+    document.getElementById("thumbnail-form").style.display = "flex";
+  }
+
   userFeedLis() {
     let feedItems = Object.values(this.state.userFeeds).reverse();
 
@@ -104,7 +109,9 @@ class UserProfile extends React.Component {
         <div className="user-profile-page">
           <NavBarContainerWithRouter />
           <div className="user-profile">
-            <UserThumbContainer id="profile-thumb" user={this.props.currentUser} />
+            <a onClick={this.openThumbForm}>
+              <UserThumbContainer id="profile-thumb" user={this.props.currentUser} />
+            </a>            
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.currentUser.username}</h2>
@@ -121,7 +128,7 @@ class UserProfile extends React.Component {
                 </div>
               </div>              
               <div>
-                <span><b>15</b> posts</span>
+                <span><b>{Object.values(this.state.userFeeds).length}</b> posts</span>
                 <span><b>{this.followersNum()}</b> followers</span>                
                 <span><b>{this.props.currentUser.followedUserIds.length}</b> following</span>
               </div>
@@ -130,6 +137,11 @@ class UserProfile extends React.Component {
                 <p>{this.props.currentUser.bio}</p>
               </div>
             </div>            
+          </div>
+          <div id="thumbnail-form" className="overlay">
+            <div className="thumbnailForm-overlay-content">
+              <ThumbnailFormContainer />
+            </div>
           </div>
           <div className="user-main-content">
             {this.userFeedLis()}
@@ -148,7 +160,7 @@ class UserProfile extends React.Component {
                 <FollowContainer user={this.props.user} currentUser={this.props.currentUser} />
               </div>
               <div>
-                <span><b>15</b> posts</span>
+                <span><b>{Object.values(this.state.userFeeds).length}</b> posts</span>
                 <span><b>{this.followersNum()}</b> followers</span>
                 <span><b>{this.followingNum()}</b> following</span>
               </div>

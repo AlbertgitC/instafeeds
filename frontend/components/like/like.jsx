@@ -12,11 +12,15 @@ class Like extends React.Component {
   }
 
   liking() {
-    this.props.likeFeed(this.props.feed_id)
+    this.props.likeFeed(this.props.feed_id).then(
+      () => { this.props.renderLikes() }
+    );
   }
   
   unliking() {
-    this.props.unlikeFeed(this.props.feed_id)
+    this.props.unlikeFeed(this.props.feed_id).then(
+      () => { this.props.renderLikes() }
+    );
   }
 
   render() {

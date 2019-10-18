@@ -1,0 +1,88 @@
+.thumbnailForm-overlay-content {
+  background: white;
+  width: 400px;
+  position: relative;
+  top: 25%; 
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 12px;
+  border: 0 solid #000;
+  height: 400px;
+  padding: 0 30px;
+}
+
+#thumb-form-thumb {
+  width: 140px;
+  height: 140px;
+  margin-top: 40px;
+}
+
+.thumbnail-form-main {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+}
+
+.thumbnail-form-main form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thumbnail-form-main input {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.thumbnail-form-main form div:first-of-type {
+  font-family: 'Barlow', sans-serif;
+  font-size: 18px;
+  color: #999999;
+  margin-bottom: 10px;
+}
+
+.thumbnail-form-main label {
+  margin: 4px 0 28px 0;
+  width: 100px;
+  height: 20px;
+  background: #3897F0;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: bold; 
+  border-radius: 4px;
+  border: 1px solid transparent;  
+  padding: 5px 9px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.thumbnail-form-main form button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  width: 120px;
+  height: 32px;
+  background: none;
+  border-radius: 4px;
+  border: 1px solid #3897F0;
+  color: #3897F0;
+  margin-bottom: 10px;
+}
+
+.thumbnail-form-main button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  width: 120px;
+  height: 32px;
+  background: none;
+  border-radius: 4px;
+  border: 1px solid black;
+  color: black;
+}
+
+
+
