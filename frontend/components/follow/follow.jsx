@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserThumbContainer from '../user_thumbnail/user_thumbnail_container';
 
 class Follow extends React.Component {
 
@@ -68,7 +69,7 @@ class Follow extends React.Component {
           <div id="unfollow-overlay" className="overlay">
             <div className="overlay-content">
               <form className="following-form" onSubmit={this.handleUnfollow}>                
-                <div>{`${this.props.user.username}'s pic here`}</div>
+                <UserThumbContainer id="unfollow-thumb" user={this.props.user} />
                 <ul>
                   <li>{`Unfollow ${this.props.user.username}?`}</li>
                   <button onClick={this.update()}>Unfollow</button>                

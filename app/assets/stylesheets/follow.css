@@ -10,6 +10,12 @@
   background: transparent; 
 }
 
+#unfollow-thumb {
+  width: 76px;
+  height: 76px;
+  margin-top: 12px;
+}
+
 .follow button {
   background: #3897F0;
   color: #FFFFFF;
