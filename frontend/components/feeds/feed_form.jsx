@@ -14,9 +14,12 @@ class FeedForm extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({
-      user_ids: this.props.followingIds
-    });
+    if (this.props.followingIds) {
+      this.setState({
+        user_ids: this.props.followingIds
+      });
+    }
+    
   }
 
   update(field) {
@@ -35,7 +38,7 @@ class FeedForm extends React.Component {
     
     feedData.append("feed[photo]", this.state.photoFile);
     feedData.append("feed[body]", this.state.body);
-
+    
     for (let i = 0; i < this.state.user_ids.length; i++) {
       feedData.append("feed[user_ids][]", this.state.user_ids[i]);
     }
