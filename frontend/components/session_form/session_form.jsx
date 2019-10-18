@@ -24,8 +24,8 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'Log In') {
       this.props.processForm(user).then(
         (user) => {
-          this.props.fetchFollowing(user.id);
-          this.props.fetchFollowers(user.id);
+          this.props.fetchFollowing(user.user.id);
+          this.props.fetchFollowers(user.user.id);
         }
       );
     } else {
