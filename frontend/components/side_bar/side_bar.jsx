@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import FollowedUser from './followed_users';
+import UserThumbContainer from '../user_thumbnail/user_thumbnail_container';
 
 
 class SideBar extends React.Component {
@@ -39,7 +40,7 @@ class SideBar extends React.Component {
       <div className="side-bar">
         <div>
           <Link to={`/users/${this.props.currentUser.id}`}>
-            <FontAwesomeIcon icon={['far', 'user']} size="4x" />
+            <UserThumbContainer id="side-bar-thumb"/>
             <span>{this.props.currentUser.username}</span>
           </Link>
         </div>
@@ -49,7 +50,7 @@ class SideBar extends React.Component {
             {followingUsers}
           </ul>
         </div>
-        <div className="side-bar-section">
+        {/* <div className="side-bar-section">
           <label>Suggestions For You</label>
           <ul>
             <li>
@@ -71,7 +72,7 @@ class SideBar extends React.Component {
               </Link>
             </li>
           </ul>
-        </div>
+        </div> */}
       </div>
     );
     

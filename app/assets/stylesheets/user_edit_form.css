@@ -7,6 +7,12 @@
   background: #FFFFFF; 
 }
 
+#edit-thumb {
+  width: 70px;
+  height: 70px;
+  margin-left: 50px;
+}
+
 .edit-profile-side {
   width: 240px;
   height: 100%;
@@ -73,12 +79,13 @@
 .edit-profile h1 {
   width: 100%;
   font-size: 22px;
-  margin: 10px 0 0 75px; 
+  margin: 0 0 0 75px; 
 }
 
 
 .edit-profile > div:first-child{
   display: flex;
+  align-items: center;
   width: 100%;
 }
 
@@ -140,6 +147,11 @@
   flex-direction: column;
 }
 
+.edit-password > div:first-child{
+  display: flex;
+  align-items: center;
+}
+
 .edit-password form {
   display: flex;
   flex-direction: column;
@@ -183,7 +195,7 @@
 .edit-password h1 {
   width: 100%;
   font-size: 22px;
-  margin: 10px 0 0 75px; 
+  margin: 0 0 0 75px; 
 }
 
 #errors {

@@ -4,6 +4,11 @@
   padding: 40px 20px;
 }
 
+#show-feed-thumb {
+  width: 40px;
+  height: 40px;
+}
+
 .show-feed {
   display: flex;
   justify-content: space-between;
@@ -12,7 +17,7 @@
   border-top-right-radius: 3px;
 }
 
-.show-feed img {
+.show-feed > div > img:first-child {
   max-width: 100%;
   min-width: 500px;
 }
@@ -33,8 +38,9 @@
 .show-feed-side > div:first-of-type {
   display: flex;
   height: 40px;
-  line-height: 38px;
   border-bottom: 1px solid lightgrey;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .show-feed-side > div:first-of-type div {

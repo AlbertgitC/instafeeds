@@ -3,6 +3,12 @@
   background: #FAFAFA; 
 }
 
+#profile-thumb {
+  width: 160px;
+  height: 160px;
+  margin-right: 30px;
+}
+
 .user-profile {
   display: flex;
   max-width: 970px;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import NavBarContainer from '../nav_bar/nav_bar_container';
 import { withRouter } from "react-router";
-
+import UserThumbContainer from '../user_thumbnail/user_thumbnail_container';
 
 class UserEditPasswordForm extends React.Component {
   constructor(props) {
@@ -83,7 +83,7 @@ class UserEditPasswordForm extends React.Component {
           <div className="edit-main">
             <div id="editPW" className="edit-password">
               <div>
-                <div id="editPicHolder">head pic</div>
+                <UserThumbContainer id="edit-thumb" />
                 <h1>{this.props.currentUser.username}</h1>
               </div>
               <form onSubmit={this.handleSubmit}>

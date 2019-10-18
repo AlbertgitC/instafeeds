@@ -4,6 +4,8 @@ import { withRouter } from "react-router";
 import FollowContainer from '../follow/follow_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import LikeContainer from '../like/like_container';
+import UserThumbContainer from '../user_thumbnail/user_thumbnail_container';
+import { Link } from 'react-router-dom';
 
 class ShowFeed extends React.Component {
 
@@ -59,12 +61,14 @@ class ShowFeed extends React.Component {
           </div>
           <div className="show-feed-side">
             <div>
-              <div>head</div>
-              <div><b>{author.username}</b></div>              
+              <Link to={`/users/${author.id}`} >
+                <UserThumbContainer id="show-feed-thumb"/>
+              </Link>
+              <Link to={`/users/${author.id}`} >
+                <span><b>{author.username}</b></span> 
+              </Link>                           
               <FollowContainer user={this.state.author} currentUser={this.props.currentUser} />              
-              <div>
-                <FontAwesomeIcon icon={['fas', 'ellipsis-v']} size="lg" />
-              </div>
+              <FontAwesomeIcon icon={['fas', 'ellipsis-v']} size="lg" />
             </div>
             <div>{this.state.feed.body}</div>
             <div>

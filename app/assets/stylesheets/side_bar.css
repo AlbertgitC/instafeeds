@@ -11,8 +11,11 @@
   margin-right: 30px; 
 }
 
+.side-bar span {
+  margin-left: 4px;
+}
+
 .side-bar a {
-  height: 44px;
   display: flex;
   align-items: center;
   font-family: 'Barlow', sans-serif;
@@ -48,5 +51,12 @@
 }
 
 .side-bar-section {
+  display: flex;
+  flex-direction: column;
   padding-top: 12px; 
+}
+
+#side-bar-thumb {
+  height: 80px;
+  width: 80px;
 }

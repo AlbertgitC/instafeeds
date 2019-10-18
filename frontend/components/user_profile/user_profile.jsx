@@ -4,6 +4,7 @@ import NavBarContainer from '../nav_bar/nav_bar_container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FollowContainer from '../follow/follow_container';
 import { withRouter } from "react-router";
+import UserThumbContainer from '../user_thumbnail/user_thumbnail_container';
 
 
 
@@ -103,7 +104,7 @@ class UserProfile extends React.Component {
         <div className="user-profile-page">
           <NavBarContainerWithRouter />
           <div className="user-profile">
-            <FontAwesomeIcon id="user-pic" icon={['far', 'user']} size="7x" />
+            <UserThumbContainer id="profile-thumb" />
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.currentUser.username}</h2>
@@ -140,7 +141,7 @@ class UserProfile extends React.Component {
         <div className="user-profile-page">
           <NavBarContainerWithRouter />
           <div className="user-profile">
-            <FontAwesomeIcon id="user-pic" icon={['far', 'user']} size="7x" />
+            <UserThumbContainer id="profile-thumb" />
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.user.username}</h2>

@@ -6,6 +6,9 @@
   font-size: 14px;
 }
 
+#feed-thumb {
+  margin: 4px;
+}
 
 .feeds-main img {
   max-width: 100%;
@@ -23,14 +26,14 @@
 }
 
 .feed div:first-child {
-  height: 60px;
   padding-left: 15px;
-  line-height: 58px;
+  display: flex;
+  align-items: center;
 }
 
 .feed span {
-  margin-left: 15px;
-  font-weight: bold;
+  margin-left: 12px;
+  font-weight: bold;  
 }
 
 .feed p {

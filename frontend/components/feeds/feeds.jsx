@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { isEqual } from 'lodash';
 import FeedFormContainer from '../feeds/feed_form_container';
+import UserThumbContainer from '../user_thumbnail/user_thumbnail_container';
 
 
 class Feeds extends React.Component {
@@ -52,18 +53,24 @@ class Feeds extends React.Component {
       let postlis = feedItems.map(
         feed => {
           return (
-            <li key={feed.id} className="feed">
+            <div key={feed.id} className="feed">
               <div>
-                <Link to={`/users/${feed.user_id}`}>
-                  <label>author's pic</label>
+                <Link to={`/users/${feed.user_id}`} >
+                  <UserThumbContainer id="feed-thumb" />
+                </Link> 
+                <Link to={`/users/${feed.user_id}`} >
                   <span>{this.props.users[feed.user_id].username}</span>
-                </Link>                 
+                </Link>
               </div>
-              <Link to={`/feeds/${feed.id}`}>
-                <img src={feed.photoUrl}/>
-              </Link>              
-              <p><b>{this.props.users[feed.user_id].username}</b> {feed.body}</p>
-            </li>
+              <div>
+                <Link to={`/feeds/${feed.id}`}>
+                  <img src={feed.photoUrl}/>
+                </Link>      
+              </div>
+              <div>
+                <p><b>{this.props.users[feed.user_id].username}</b> {feed.body}</p>
+              </div>
+            </div>
           );
         }
       );
@@ -76,9 +83,9 @@ class Feeds extends React.Component {
   render() {
     return (
       <div className="feeds-main">
-        <ul>
+        <div>
           {this.feedLis()}
-        </ul>
+        </div>
         <div id="feedForm" className="overlay">
           <div className="feedForm-overlay-content">
             <FeedFormContainer rerenderFeeds={this.rerenderFeeds}/>
