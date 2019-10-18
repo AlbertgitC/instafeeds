@@ -16,8 +16,8 @@ class Feeds extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.user_ids) {
-      this.props.fetchUsers({ ids: this.props.user_ids });
+    if (this.props.user_ids) { 
+      this.props.fetchUsers({ filter: { ids: this.props.user_ids.concat([this.props.currentUser.id]) }});
       this.props.fetchFeeds({ids: this.props.user_ids.concat(this.props.currentUser.id)}).then(
         (action) => { this.setState({ feeds: action.feeds }); }
       );
@@ -28,7 +28,7 @@ class Feeds extends React.Component {
   componentDidUpdate(oldProps) {
     if (!isEqual(oldProps.user_ids, this.props.user_ids)) {
       
-      this.props.fetchUsers({ids: this.props.user_ids});
+      this.props.fetchUsers({filter: {ids: this.props.user_ids}});
       this.props.fetchFeeds({ids: this.props.user_ids.concat(this.props.currentUser.id)}).then(
         (action) => { this.setState({ feeds: action.feeds }); }
       );

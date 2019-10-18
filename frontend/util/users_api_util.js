@@ -20,6 +20,6 @@ export const fetchUsers = (filter) => {
   return $.ajax({
     method: "get",
     url: "api/users",
-    data: { filter }
+    data: filter
   });
 }

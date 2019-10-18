@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import FollowedUser from './followed_users';
 import UserThumbContainer from '../user_thumbnail/user_thumbnail_container';
+import { isEqual } from 'lodash';
 
 
 class SideBar extends React.Component {
@@ -13,15 +14,20 @@ class SideBar extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.users) {
-      this.setState({ users: Object.values(this.props.users) });
-    }
+    
+    this.props.fetchFollowing(this.props.currentUser.id).then(
+      response => { 
+        this.props.fetchUsers({ filter: { ids: response.following.followingArr.concat([this.props.currentUser.id]) } }).then(
+          res => { this.setState({ users: Object.values(res.users) }) }
+        );
+      }
+    )
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.users !== this.props.users) {
-      this.setState({users: Object.values(this.props.users)});
-    }
+    // if (!isEqual(prevProps.users, this.props.users)) {
+    //   this.setState({users: Object.values(this.props.users)});
+    // }
   }
 
 
