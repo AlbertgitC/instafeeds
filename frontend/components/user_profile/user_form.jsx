@@ -78,7 +78,7 @@ class UserEditForm extends React.Component {
   render() {
     const NavBarContainerWithRouter = withRouter(NavBarContainer);
     
-    if (this.props.currentUser.id !== 7) {
+    if (this.props.currentUser.id !== 1) {
       return (
         <div>
           <NavBarContainerWithRouter />
