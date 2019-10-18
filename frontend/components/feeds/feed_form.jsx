@@ -75,9 +75,9 @@ class FeedForm extends React.Component {
             {this.renderErrors()}
             <input type="file"
               onChange={this.handleFile}
-              id="file"
+              id="feed-file"
             />
-            <label htmlFor="file">Choose a file</label>
+            <label htmlFor="feed-file">Choose a file</label>
             <input type="text"
               onChange={this.update("body")}
               placeholder="Write a caption..."

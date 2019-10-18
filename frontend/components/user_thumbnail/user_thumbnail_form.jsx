@@ -46,9 +46,9 @@ class ThumbnailForm extends React.Component {
           <div>Change Profile Picture</div>
           <input type="file"
             onChange={this.handleFile}
-            id="file"
+            id="thumb-file"
           />
-          <label htmlFor="file">Choose a file</label>
+          <label htmlFor="thumb-file">Choose a file</label>
           <button>Submit</button>
         </form>
         <button onClick={this.closeForm}>Cancel</button>
