@@ -24,7 +24,7 @@ class Api::UsersController < ApplicationController
     
     @users = User.where(id: fetch_users_params[:ids])
     
-    if @users
+    if !@users.empty?
       render "api/users/index"
     else
       render json: ["Users not found"], status: 404

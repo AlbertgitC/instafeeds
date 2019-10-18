@@ -40,7 +40,7 @@ class SideBar extends React.Component {
       <div className="side-bar">
         <div>
           <Link to={`/users/${this.props.currentUser.id}`}>
-            <UserThumbContainer id="side-bar-thumb"/>
+            <UserThumbContainer id="side-bar-thumb" user={this.props.currentUser} />
             <span>{this.props.currentUser.username}</span>
           </Link>
         </div>

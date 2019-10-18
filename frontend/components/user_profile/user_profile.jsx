@@ -104,7 +104,7 @@ class UserProfile extends React.Component {
         <div className="user-profile-page">
           <NavBarContainerWithRouter />
           <div className="user-profile">
-            <UserThumbContainer id="profile-thumb" />
+            <UserThumbContainer id="profile-thumb" user={this.props.currentUser} />
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.currentUser.username}</h2>
@@ -141,7 +141,7 @@ class UserProfile extends React.Component {
         <div className="user-profile-page">
           <NavBarContainerWithRouter />
           <div className="user-profile">
-            <UserThumbContainer id="profile-thumb" />
+            <UserThumbContainer id="profile-thumb" user={this.props.user} />
             <div className="user-details">
               <div className="username">
                 <h2>{this.props.user.username}</h2>

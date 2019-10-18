@@ -8,7 +8,7 @@ import UserThumb from './user_thumbnail';
 const mapStateToProps = ({ entities, session }, ownProps) => {
 
   return {
-    
+    currentUser: entities.users[session.currentUserId]
   };
 };
 

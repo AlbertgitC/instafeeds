@@ -83,7 +83,7 @@ class UserEditPasswordForm extends React.Component {
           <div className="edit-main">
             <div id="editPW" className="edit-password">
               <div>
-                <UserThumbContainer id="edit-thumb" />
+                <UserThumbContainer id="edit-thumb" user={this.props.currentUser} />
                 <h1>{this.props.currentUser.username}</h1>
               </div>
               <form onSubmit={this.handleSubmit}>

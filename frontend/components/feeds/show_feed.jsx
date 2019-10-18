@@ -62,7 +62,7 @@ class ShowFeed extends React.Component {
           <div className="show-feed-side">
             <div>
               <Link to={`/users/${author.id}`} >
-                <UserThumbContainer id="show-feed-thumb"/>
+                <UserThumbContainer id="show-feed-thumb" user={author}/>
               </Link>
               <Link to={`/users/${author.id}`} >
                 <span><b>{author.username}</b></span> 

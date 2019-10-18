@@ -56,7 +56,7 @@ class Feeds extends React.Component {
             <div key={feed.id} className="feed">
               <div>
                 <Link to={`/users/${feed.user_id}`} >
-                  <UserThumbContainer id="feed-thumb" />
+                  <UserThumbContainer id="feed-thumb" user={this.props.users[feed.user_id]}/>
                 </Link> 
                 <Link to={`/users/${feed.user_id}`} >
                   <span>{this.props.users[feed.user_id].username}</span>
