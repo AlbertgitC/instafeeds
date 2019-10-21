@@ -15,28 +15,30 @@ Instafeeds is an Instagram clone social media application. Main features include
 - [jquery-rails](https://github.com/rails/jquery-rails)
 - [rails-jbuilder](https://github.com/rails/jbuilder)
 
+## Index
 
-# README
+![Index](https://github.com/AlbertgitC/instafeeds/blob/master/public/images/Screen%20Shot%202019-10-20%20at%205.02.31%20PM.png?raw=true)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+---
 
-Things you may want to cover:
+## Feed
 
-* Ruby version
+![Feed](https://github.com/AlbertgitC/instafeeds/blob/master/public/images/Screen%20Shot%202019-10-20%20at%205.03.15%20PM.png?raw=true)
 
-* System dependencies
+---
 
-* Configuration
+## User Profile
 
-* Database creation
+![User Profile](https://github.com/AlbertgitC/instafeeds/blob/master/public/images/Screen%20Shot%202019-10-20%20at%205.04.11%20PM.png?raw=true)
 
-* Database initialization
+## Development Documentation
 
-* How to run the test suite
+For ease of share user profile link and feeds link, users can go to User Profile page and Feed page without having an account or logged in. But page features need to adjust accordingly.
 
-* Services (job queues, cache servers, search engines, etc.)
+Example: 
+- When logged in
+![User Profile Logged](https://github.com/AlbertgitC/instafeeds/blob/master/public/images/Screen%20Shot%202019-10-20%20at%204.58.37%20PM.png?raw=true)
 
-* Deployment instructions
+- Not logged in
+![User Profile Not Logged](https://github.com/AlbertgitC/instafeeds/blob/master/public/images/Screen%20Shot%202019-10-20%20at%204.59.52%20PM.png?raw=true)
 
-* ...
