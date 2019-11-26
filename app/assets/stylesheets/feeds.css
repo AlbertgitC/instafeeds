@@ -119,3 +119,7 @@
 	position: absolute;
 	z-index: -1;
 }
+
+#feedForm {
+  z-index: 3;
+}
