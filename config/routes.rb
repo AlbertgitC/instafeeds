@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       post 'follows', to: 'follows#create'
       delete 'follows', to: 'follows#destroy'
     end
+    get 'search', to: 'users#search'
     resources :feeds, only: [:index, :create, :update, :show, :destroy] do
       resources :likes, only: [:create, :index]
       delete 'likes', to: 'likes#destroy'

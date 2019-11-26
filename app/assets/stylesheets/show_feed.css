@@ -59,3 +59,7 @@
   border-top: 1px solid lightgrey;
   margin-top: auto;
 }
+
+#like-div svg {
+  cursor: pointer;
+}

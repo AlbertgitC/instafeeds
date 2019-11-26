@@ -17,10 +17,6 @@
   margin: 0 auto;
 }
 
-.nav-bar div:first-of-type{
-  display: flex;
-}
-
 .nav-bar h1 {
   font-family: 'Cookie', cursive;
   font-size: 36px;
@@ -39,6 +35,10 @@
   text-align: center;
   padding: 3px 18px 3px 18px;
   margin-left: 16px;
+}
+
+.logo {
+  display: flex;
 }
 
 .logo span {
@@ -81,4 +81,55 @@
   color: #3897F0;
 }
 
+.search-main {
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+}
+
+.search-main input {
+  position: relative;
+  z-index: 2;
+}
+
+.search-main ul {
+  position: absolute;
+  border: solid 1px #e6e6e6;
+  border-radius: 3px;
+  box-shadow: 0 0 5px rgba(0,0,0,.0975);
+  width: 243px;
+  max-height: 362px;
+  top: 63px;
+  background: #FFFFFF;
+  left: 50%;
+  transform: translate(-44%);
+  overflow: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.search-main li {
+  padding: 8px 14px;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.search-main a {
+  display: flex;
+  align-items: center;
+}
+
+.search-main img {
+  margin-right: 10px;
+}
+
+.search-overlay {
+  display: block;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1; 
+  left: 0;
+  top: 0; 
+  background-color:transparent;
+  overflow-x: hidden; 
+}
 

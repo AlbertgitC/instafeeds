@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import FeedFormContainer from '../feeds/feed_form_container';
+import Search from '../search/search';
 
 
 class NavBar extends React.Component {
@@ -36,7 +37,7 @@ class NavBar extends React.Component {
                 <h1>Instafeeds</h1>
               </div>
             </Link>                    
-            <input type="text" placeholder="&#128269; Search"/>
+            <Search />
             <div className="nav-menu">
               <a onClick={this.openForm}>
                 <FontAwesomeIcon icon={['far', 'plus-square']} size="lg" />
@@ -66,7 +67,7 @@ class NavBar extends React.Component {
                 <h1>Instafeeds</h1>
               </div>
             </Link>
-            <input type="text" placeholder="&#128269; Search" />
+            <Search  />
             <div className="nav-menu">
               <a onClick={this.openForm}>
                 <FontAwesomeIcon icon={['far', 'plus-square']} size="lg" />
@@ -102,7 +103,7 @@ class NavBar extends React.Component {
                 <h1>Instafeeds</h1>
               </div>
             </Link>
-            <input type="text" placeholder="&#128269; Search" />  
+            <Search  />  
             <div className="nav-button">
               <Link to="/login">
                 <button>Log In</button> 

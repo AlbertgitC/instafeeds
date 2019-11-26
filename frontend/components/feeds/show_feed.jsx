@@ -75,7 +75,7 @@ class ShowFeed extends React.Component {
                 <span><b>{author.username}</b></span> 
               </Link>                           
               <FollowContainer user={this.state.author} currentUser={this.props.currentUser} />              
-              <FontAwesomeIcon icon={['fas', 'ellipsis-v']} size="lg" />
+              {/* <FontAwesomeIcon icon={['fas', 'ellipsis-v']} size="lg" /> */}
             </div>
             <div>{this.state.feed.body}</div>
             <div>

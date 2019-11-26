@@ -69,6 +69,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def search
+    @users = User.where("lower(username) like ?", "%#{search_users_params[:key_word].downcase}%").limit(10)
+    
+    if !@users.empty?
+      render "api/users/index"
+    else
+      render json: ["Users not found"], status: 404
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit({:user => [:username, :email, :website, :bio, :thumbnail, :password, :new_password, :new_password2]}, :formType)
@@ -81,5 +91,8 @@ class Api::UsersController < ApplicationController
   end
   def fetch_users_params
     params.require(:filter).permit(ids:[])
+  end
+  def search_users_params
+    params.require(:filter).permit(:key_word)
   end
 end

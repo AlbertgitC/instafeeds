@@ -52,3 +52,7 @@ export const fetchUsers = filter => dispatch => {
     errors => dispatch(receiveErrors(errors.responseJSON))
   );
 }
+
+export const searchUsers = filter => {
+  return API.searchUsers(filter);
+}

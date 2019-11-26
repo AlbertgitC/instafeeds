@@ -23,3 +23,11 @@ export const fetchUsers = (filter) => {
     data: filter
   });
 }
+
+export const searchUsers = (filter) => {
+  return $.ajax({
+    method: "get",
+    url: "api/search",
+    data: filter
+  });
+}

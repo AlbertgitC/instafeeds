@@ -26,7 +26,7 @@ class Like extends React.Component {
   render() {
     if (!this.props.currentUser) {
       return (
-        <div>
+        <div id="like-div">
           <Link to="/login">
             <FontAwesomeIcon icon={['far', 'heart']} size="lg" />
           </Link>          
@@ -34,13 +34,13 @@ class Like extends React.Component {
       );
     } else if (this.props.likerIds.includes(this.props.currentUser.id)) {
       return (
-        <div className="unlike">
+        <div className="unlike" id="like-div">
           <FontAwesomeIcon onClick={this.unliking} icon={['fas', 'heart']} size="lg" />
         </div>
       );
     } else {
       return (
-        <div>
+        <div id="like-div">
           <FontAwesomeIcon onClick={this.liking} icon={['far', 'heart']} size="lg" />
         </div>
       );
