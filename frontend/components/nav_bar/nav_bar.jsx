@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeedFormContainer from '../feeds/feed_form_container';
 import Search from '../search/search';
 
@@ -32,7 +32,7 @@ class NavBar extends React.Component {
             <Link to="/">
               <div className="logo">
                 <span>
-                  <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
+                  <FontAwesomeIcon icon={['fas', 'camera-retro']} size="2x" />
                 </span>              
                 <h1>Instafeeds</h1>
               </div>
@@ -62,7 +62,7 @@ class NavBar extends React.Component {
             <Link to="/">
               <div className="logo">
                 <span>
-                  <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
+                  <FontAwesomeIcon icon={['fas', 'camera-retro']} size="2x" />
                 </span>
                 <h1>Instafeeds</h1>
               </div>
@@ -98,7 +98,7 @@ class NavBar extends React.Component {
             <Link to="/">
               <div className="logo">
                 <span>
-                  <FontAwesomeIcon icon={['fab', 'instagram']} size="2x" />
+                  <FontAwesomeIcon icon={['fas', 'camera-retro']} size="2x" />
                 </span>
                 <h1>Instafeeds</h1>
               </div>
